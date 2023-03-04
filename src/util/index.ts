@@ -1,6 +1,5 @@
-
 // 节流
-export const throttle = (fn: () => void, delay: number | undefined)=> {
+export const throttle = (fn: () => void, delay: number | undefined) => {
     let isThrottle = true
     return () => {
         if (!isThrottle) {
@@ -13,14 +12,28 @@ export const throttle = (fn: () => void, delay: number | undefined)=> {
             clearTimeout(t)
         }, delay)
     }
-};
+}
 
 export const debounce = (fn: () => void, delay: number | undefined) => {
     let timeout: any = null
     return () => {
         clearTimeout(timeout)
-        timeout = setTimeout(function(){
+        timeout = setTimeout(function () {
             fn()
-        }, delay);
+        }, delay)
     }
+}
+
+// 下载文件
+export const download = (downfile: Blob) => {
+    const tmpLink = document.createElement('a')
+    const objectUrl = URL.createObjectURL(downfile)
+
+    tmpLink.href = objectUrl
+    tmpLink.download = downfile.name
+    document.body.appendChild(tmpLink)
+    tmpLink.click()
+
+    document.body.removeChild(tmpLink)
+    URL.revokeObjectURL(objectUrl)
 }

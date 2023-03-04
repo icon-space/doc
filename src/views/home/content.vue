@@ -33,7 +33,6 @@
                 </a-collapse>
             </div>
         </div>
-
     </a-layout-content>
 </template>
 
@@ -45,7 +44,7 @@ import Category from '../../category'
 import CategoryList, { total } from '../../category_list'
 import useSiteStore from '../../stores/site'
 import Card from '../../components/Card.vue'
-import { throttle, debounce } from "../../util";
+import { debounce } from '../../util'
 
 const site = useSiteStore()
 
@@ -64,86 +63,77 @@ const searchCategory = ref<Record<string, string>>(Category)
 // 当前搜索到的图标
 const searchIcons = ref<Record<string, any[]>>(CategoryList)
 
-
 // 处理搜索
-const handlerSearch = debounce( async () => {
-    console.time('handlerSearch');
-
+const handlerSearch = debounce(async () => {
     if (keyword.value.trim() === '') {
         searchCategory.value = Category
         searchIcons.value = CategoryList
         searchTotal.value = total
         expandKeys.value = Object.keys(Category)
-        console.timeEnd('handlerSearch');
         return
     }
 
-    const allCategory: Record<string, string> = {};
-    const category: Record<string, string> = {};
-    const icons: Record<string, any[]> = {};
+    const allCategory: Record<string, string> = {}
+    const category: Record<string, string> = {}
+    const icons: Record<string, any[]> = {}
 
     for (let categoryKey in Category) {
-        const a = categoryKey.indexOf(keyword.value);
-        const b = Category[categoryKey].indexOf(keyword.value);
+        const a = categoryKey.indexOf(keyword.value)
+        const b = Category[categoryKey].indexOf(keyword.value)
         if ((a & b) === -1) {
-            continue;
+            continue
         }
-        category[categoryKey] = Category[categoryKey];
-        allCategory[categoryKey] = Category[categoryKey];
-        icons[categoryKey] = CategoryList[categoryKey];
+        category[categoryKey] = Category[categoryKey]
+        allCategory[categoryKey] = Category[categoryKey]
+        icons[categoryKey] = CategoryList[categoryKey]
     }
 
     for (let categoryListKey in CategoryList) {
         if (categoryListKey in allCategory) {
-            continue;
+            continue
         }
 
         for (let value of CategoryList[categoryListKey]) {
-            const a = value.title.indexOf(keyword.value);
-            const b = value.name.indexOf(keyword.value);
-            let c = -1;
+            const a = value.title.indexOf(keyword.value)
+            const b = value.name.indexOf(keyword.value)
+            let c = -1
             for (let tag of value.tag) {
                 if (tag.indexOf(keyword.value) !== -1) {
-                    c = 0;
-                    break;
+                    c = 0
+                    break
                 }
             }
 
             if ((a & b & c) === -1) {
-                continue;
+                continue
             }
 
-            category[categoryListKey] = Category[categoryListKey];
+            category[categoryListKey] = Category[categoryListKey]
             if (!(categoryListKey in icons)) {
-                icons[categoryListKey] = [];
+                icons[categoryListKey] = []
             }
-            icons[categoryListKey].push(value);
+            icons[categoryListKey].push(value)
         }
-
     }
 
-    let num = 0;
+    let num = 0
     for (let iconsKey in icons) {
-        num += icons[iconsKey].length;
+        num += icons[iconsKey].length
     }
 
-    searchCategory.value = category;
-    searchIcons.value = icons;
-    searchTotal.value = num;
-    expandKeys.value = Object.keys(category);
-    console.timeEnd('handlerSearch');
+    searchCategory.value = category
+    searchIcons.value = icons
+    searchTotal.value = num
+    expandKeys.value = Object.keys(category)
 }, 5)
 
 // 搜索
 const search = () => {
-    console.log(keyword.value)
     handlerSearch()
 }
-
 </script>
 
 <style lang="scss">
-
 .layout-content {
     height: calc(100vh - 60px);
     width: 1170px;
@@ -199,6 +189,5 @@ const search = () => {
             }
         }
     }
-
 }
 </style>

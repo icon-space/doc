@@ -4,18 +4,18 @@
             <a-button type="primary">{{ $t('batchDownload') }}</a-button>
         </div>
         <div class="option">
-            <a-form :model="form" layout="vertical">
+            <a-form :model="option" layout="vertical">
                 <a-form-item field="size" :label="$t('iconSize')">
-                    <a-slider :min="12" :max="48" v-model="form.size" />
-                    <a-input-number v-model="form.size" :min="12" :max="48" style="width: 90px; margin-left: 14px" />
+                    <a-slider :min="12" :max="48" v-model="option.size" />
+                    <a-input-number v-model="option.size" :min="12" :max="48" style="width: 90px; margin-left: 14px" />
                 </a-form-item>
                 <a-form-item field="strokeWidth" :label="$t('strokeWidth')">
-                    <a-slider :min="1" :max="4" v-model="form.strokeWidth" />
-                    <a-input-number v-model="form.strokeWidth" :min="1" :max="4" style="width: 90px; margin-left: 14px" />
+                    <a-slider :min="1" :max="4" v-model="option.strokeWidth" />
+                    <a-input-number v-model="option.strokeWidth" :min="1" :max="4" style="width: 90px; margin-left: 14px" />
                 </a-form-item>
                 <a-form-item field="theme" :label="$t('iconTheme')">
                     <a-space direction="vertical">
-                        <a-radio-group v-model="form.theme">
+                        <a-radio-group v-model="option.theme">
                             <a-grid :cols="2" :rowGap="10" :colGap="10">
                                 <a-grid-item>
                                     <a-radio value="outline">
@@ -80,77 +80,77 @@
                             </a-grid>
                         </a-radio-group>
                         <a-grid :cols="2" :rowGap="0" :colGap="10" class="theme-option">
-                            <template v-if="form.theme === 'outline'">
+                            <template v-if="option.theme === 'outline'">
                                 <a-grid-item>
                                     <a-form-item field="colors.outline.fill" :label="$t('strokeColor')">
                                         <a-space>
-                                            <ColorPicker v-model:hex="form.colors.outline.fill"></ColorPicker>
-                                            <a-input size="mini" v-model="form.colors.outline.fill" />
+                                            <ColorPicker v-model:hex="option.colors.outline.fill"></ColorPicker>
+                                            <a-input size="mini" v-model="option.colors.outline.fill" />
                                         </a-space>
                                     </a-form-item>
                                 </a-grid-item>
                             </template>
 
-                            <template v-if="form.theme === 'filled'">
+                            <template v-if="option.theme === 'filled'">
                                 <a-grid-item>
                                     <a-form-item field="colors.filled.fill" :label="$t('fillColor')">
                                         <a-space>
-                                            <ColorPicker v-model:hex="form.colors.filled.fill"></ColorPicker>
-                                            <a-input size="mini" v-model="form.colors.filled.fill" />
+                                            <ColorPicker v-model:hex="option.colors.filled.fill"></ColorPicker>
+                                            <a-input size="mini" v-model="option.colors.filled.fill" />
                                         </a-space>
                                     </a-form-item>
                                 </a-grid-item>
                             </template>
 
-                            <template v-if="form.theme === 'two-tone'">
+                            <template v-if="option.theme === 'two-tone'">
                                 <a-grid-item>
                                     <a-form-item field="colors.twoTone.fill" :label="$t('strokeColor')">
                                         <a-space>
-                                            <ColorPicker v-model:hex="form.colors.twoTone.fill"></ColorPicker>
-                                            <a-input size="mini" v-model="form.colors.twoTone.fill" />
+                                            <ColorPicker v-model:hex="option.colors.twoTone.fill"></ColorPicker>
+                                            <a-input size="mini" v-model="option.colors.twoTone.fill" />
                                         </a-space>
                                     </a-form-item>
                                 </a-grid-item>
                                 <a-grid-item>
                                     <a-form-item field="colors.twoTone.twoTone" :label="$t('fillColor')">
                                         <a-space>
-                                            <ColorPicker v-model:hex="form.colors.twoTone.twoTone"></ColorPicker>
-                                            <a-input size="mini" v-model="form.colors.twoTone.twoTone" />
+                                            <ColorPicker v-model:hex="option.colors.twoTone.twoTone"></ColorPicker>
+                                            <a-input size="mini" v-model="option.colors.twoTone.twoTone" />
                                         </a-space>
                                     </a-form-item>
                                 </a-grid-item>
                             </template>
 
-                            <template v-if="form.theme === 'multi-color'">
+                            <template v-if="option.theme === 'multi-color'">
                                 <a-grid-item>
                                     <a-form-item field="colors.multiColor.outStrokeColor" :label="$t('outerStrokeColor')">
                                         <a-space>
-                                            <ColorPicker v-model:hex="form.colors.multiColor.outStrokeColor"></ColorPicker>
-                                            <a-input size="mini" v-model="form.colors.multiColor.outStrokeColor" />
+                                            <ColorPicker v-model:hex="option.colors.multiColor.outStrokeColor"></ColorPicker>
+                                            <a-input size="mini" v-model="option.colors.multiColor.outStrokeColor" />
                                         </a-space>
                                     </a-form-item>
                                 </a-grid-item>
                                 <a-grid-item>
                                     <a-form-item field="colors.multiColor.outFillColor" :label="$t('outerFillColor')">
                                         <a-space>
-                                            <ColorPicker v-model:hex="form.colors.multiColor.outFillColor"></ColorPicker>
-                                            <a-input size="mini" v-model="form.colors.multiColor.outFillColor" />
+                                            <ColorPicker v-model:hex="option.colors.multiColor.outFillColor"></ColorPicker>
+                                            <a-input size="mini" v-model="option.colors.multiColor.outFillColor" />
                                         </a-space>
                                     </a-form-item>
                                 </a-grid-item>
                                 <a-grid-item>
                                     <a-form-item field="colors.multiColor.innerStrokeColor" :label="$t('interStrokeColor')">
                                         <a-space>
-                                            <ColorPicker v-model:hex="form.colors.multiColor.innerStrokeColor"></ColorPicker>
-                                            <a-input size="mini" v-model="form.colors.multiColor.innerStrokeColor" />
+                                            <ColorPicker v-model:hex="option.colors.multiColor.innerStrokeColor"></ColorPicker>
+                                            <a-input size="mini" v-model="option.colors.multiColor.innerStrokeColor" />
                                         </a-space>
                                     </a-form-item>
                                 </a-grid-item>
                                 <a-grid-item>
                                     <a-form-item field="colors.multiColor.innerFillColor" :label="$t('interFillColor')">
                                         <a-space>
-                                            <ColorPicker v-model:hex="form.colors.multiColor.innerFillColor"></ColorPicker>
-                                            <a-input size="mini" v-model="form.colors.multiColor.innerFillColor" />
+                                            <ColorPicker v-model:hex="option.colors.multiColor.innerFillColor"></ColorPicker>
+                                            <a-input size="mini" v-model="option.colors.multiColor.innerFillColor" />
                                         </a-space>
                                     </a-form-item>
                                 </a-grid-item>
@@ -159,7 +159,7 @@
                     </a-space>
                 </a-form-item>
                 <a-form-item field="endpoint" :label="$t('linecap')">
-                    <a-radio-group v-model="form.strokeLinecap">
+                    <a-radio-group v-model="option.strokeLinecap">
                         <a-grid :cols="3" :rowGap="10">
                             <a-grid-item>
                                 <a-radio value="round">
@@ -192,7 +192,7 @@
                     </a-radio-group>
                 </a-form-item>
                 <a-form-item field="strokeLinejoin" :label="$t('linejoin')">
-                    <a-radio-group v-model="form.strokeLinejoin">
+                    <a-radio-group v-model="option.strokeLinejoin">
                         <a-grid :cols="3" :rowGap="10">
                             <a-grid-item>
                                 <a-radio value="round">
@@ -225,7 +225,7 @@
                     </a-radio-group>
                 </a-form-item>
                 <a-form-item>
-                    <a-button>{{ $t('reset') }}</a-button>
+                    <a-button @click="reset">{{ $t('reset') }}</a-button>
                 </a-form-item>
             </a-form>
         </div>
@@ -235,16 +235,20 @@
 <script setup lang="ts">
 import { DEFAULT_ICON_CONFIGS } from '@icon-space/vue-next'
 import { IconSpace } from '@icon-space/vue-next/es/all'
-import type { IIconConfig } from '@icon-space/vue-next/es/runtime'
 import ColorPicker from 'colorpicker-v3' // 注册组件
 import 'colorpicker-v3/style.css'
 import useSiteStore from '../../stores/site'
+import useOptionStore from '../../stores/option'
 
 const site = useSiteStore()
+const option = useOptionStore()
 
-const props = defineProps<{
-    form: IIconConfig
-}>()
+// 重置
+const reset = () => {
+    console.log('reset start')
+    option.reset()
+    console.log('reset end')
+}
 </script>
 
 <style lang="scss">

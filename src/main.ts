@@ -7,7 +7,6 @@ import '@arco-design/web-vue/dist/arco.css'
 import '@icon-space/vue-next/styles/index.css'
 const app = createApp(App)
 
-
 app.use(stores)
 app.use(routes)
 app.use(i18n)

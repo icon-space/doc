@@ -17,5 +17,11 @@ export default {
     interFillColor: 'Inner fill color',
     linecap: 'Linecap',
     linejoin: 'Linejoin',
-    reset: 'Reset'
+    reset: 'Reset',
+    copyName: 'Copy Name',
+    copyCamelCase: 'Copy Camel-Case Name',
+    copySvg: 'Copy SVG',
+    copyReactCode: 'Copy React Code',
+    copyVueCode: 'Copy Vue Code',
+    downloadSvg: 'Download SVG'
 }

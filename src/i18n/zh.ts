@@ -17,5 +17,11 @@ export default {
     interFillColor: '内部填充颜色',
     linecap: '端点类型',
     linejoin: '拐点类型',
-    reset: '重置配置'
+    reset: '重置配置',
+    copyName: '复制名字',
+    copyCamelCase: '复制大驼峰名字',
+    copySvg: '复制SVG',
+    copyReactCode: '复制React代码',
+    copyVueCode: '复制Vue代码',
+    downloadSvg: '下载SVG'
 }

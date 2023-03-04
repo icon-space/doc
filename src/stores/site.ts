@@ -16,10 +16,9 @@ const useSiteStore = defineStore({
     id: 'site',
     state: (): SiteOption => ({
         theme: 'light',
-        lang: 'en',
+        lang: 'en'
     }),
-    getters: {
-    },
+    getters: {},
     actions: {
         init() {
             this.setTheme(this.theme)

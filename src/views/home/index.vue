@@ -1,46 +1,17 @@
 <template>
     <Content></Content>
-    <Right :form="config"></Right>
+    <Right></Right>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
 import Content from './content.vue'
 import Right from './right.vue'
-import { IconProvider } from '@icon-space/vue-next/es'
-import type { IIconConfig } from '@icon-space/vue-next/es/runtime'
+import { IconProvider } from '@icon-space/vue-next'
+import useOptionStore from '../../stores/option'
 
-const config = reactive<IIconConfig>({
-    size: 24,
-    strokeWidth: 4,
-    theme: 'outline',
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
-    colors: {
-        outline: {
-            fill: '#333',
-            background: 'transparent'
-        },
-        filled: {
-            fill: '#333',
-            background: '#FFF'
-        },
-        twoTone: {
-            fill: '#333',
-            twoTone: '#2F88FF'
-        },
-        multiColor: {
-            outStrokeColor: '#333',
-            outFillColor: '#2F88FF',
-            innerStrokeColor: '#FFF',
-            innerFillColor: '#43CCF8'
-        }
-    },
-    rtl: false,
-    prefix: 'i'
-})
+const option = useOptionStore()
 
-IconProvider(config)
+IconProvider(option.$state)
 </script>
 
 <style scoped lang="scss"></style>
