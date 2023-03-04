@@ -44,7 +44,8 @@ import useSiteStore, { LangType } from '../stores/site'
 
 const site = useSiteStore()
 
-const setLanguage = (val: LangType) => {
+const setLanguage = (val: any) => {
+    val = val as LangType
     site.setLang(val)
 }
 

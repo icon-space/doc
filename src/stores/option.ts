@@ -1,7 +1,11 @@
 import { defineStore } from 'pinia'
 import { IIconConfig } from '@icon-space/vue-next/es/runtime'
 
-const def: IIconConfig = {
+type Iconfig = IIconConfig & {
+    size: number
+}
+
+const def: Iconfig = {
     size: 24,
     strokeWidth: 4,
     theme: 'outline',
@@ -34,7 +38,7 @@ const def: IIconConfig = {
 // 图标设置
 const useOptionStore = defineStore({
     id: 'option',
-    state: (): IIconConfig => ({
+    state: (): Iconfig => ({
         size: def.size,
         strokeWidth: def.strokeWidth,
         theme: def.theme,

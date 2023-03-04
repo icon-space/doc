@@ -12,7 +12,7 @@
             </a-space>
             <span v-else class="title">{{ name }}</span>
             <span class="more">
-                <a-dropdown @select.stop="action">
+                <a-dropdown @select="action">
                     <a-button shape="circle" type="text" size="mini">
                         <template #icon>
                             <IconSpace type="more" v-bind="DEFAULT_ICON_CONFIGS" size="14" fill="currentColor"></IconSpace>
@@ -160,7 +160,8 @@ const actions: Record<string, () => void> = {
 }
 
 // 操作
-const action = (val: string) => {
+const action = (val: any) => {
+    val = val as string
     if (val in actions) {
         actions[val]()
     }
