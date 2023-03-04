@@ -37,3 +37,7 @@ export const download = (downfile: Blob) => {
     document.body.removeChild(tmpLink)
     URL.revokeObjectURL(objectUrl)
 }
+
+export const getSvgDom = (name: string): string | undefined => {
+    return document.querySelector(`#i-${name}`)?.firstElementChild?.innerHTML
+}

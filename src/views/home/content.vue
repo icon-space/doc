@@ -15,22 +15,20 @@
             </a-space>
         </div>
         <div class="layout-icons">
-            <a-layout-sider class="layout-side-left">
-                <a-anchor line-less style="width: 100%" :change-hash="true" scroll-container=".icons">
-                    <a-anchor-link :href="`#${k}`" v-for="(v, k) in searchCategory" :key="k"> {{ site.lang === 'zh' ? v : k }}（{{ searchIcons[k].length }}） </a-anchor-link>
+            <a-layout-sider class="layout-side-left" ref="anchor">
+                <a-anchor line-less style="width: 100%" :change-hash="true" scroll-container=".icons" @change="handlerAnchorChange">
+                    <a-anchor-link :id="`${k}-anchor`" :href="`#${k}`" v-for="(v, k) in searchCategory" :key="k"> {{ site.lang === 'zh' ? v : k }}（{{ searchIcons[k].length }}） </a-anchor-link>
                 </a-anchor>
             </a-layout-sider>
             <div class="icons">
-                <a-collapse :bordered="false" :default-active-key="expandKeys">
-                    <a-collapse-item v-for="(v, k) in searchIcons" :key="k">
-                        <template #header>
-                            <h3 :id="k">{{ site.lang === 'zh' ? Category[k] : k }}（{{ searchIcons[k].length }}）</h3>
-                        </template>
-                        <a-space wrap>
-                            <Card v-for="val in v" :key="val.id" :name="val.name" :zh-name="val.title" :card="mode === 'card'"></Card>
-                        </a-space>
-                    </a-collapse-item>
-                </a-collapse>
+                <Expand  v-for="(v, k) in searchIcons" :key="k">
+                    <template #header>
+                        <h3 :id="k">{{ site.lang === 'zh' ? Category[k] : k }}（{{ searchIcons[k].length }}）</h3>
+                    </template>
+                    <a-space wrap>
+                        <Card v-for="val in v" :key="val.id" :name="val.name" :zh-name="val.title" :card="mode === 'card'"></Card>
+                    </a-space>
+                </Expand>
             </div>
         </div>
     </a-layout-content>
@@ -44,9 +42,16 @@ import Category from '../../category'
 import CategoryList, { total } from '../../category_list'
 import useSiteStore from '../../stores/site'
 import Card from '../../components/Card.vue'
+import Expand from "../../components/Expand.vue";
 import { debounce } from '../../util'
 
 const site = useSiteStore()
+
+const anchor = ref<HTMLElement>()
+const handlerAnchorChange = (hash: string) => {
+    const id = hash + '-anchor'
+    document.querySelector(id)?.scrollIntoView(false)
+}
 
 // 展示模式
 const mode = ref<string>('list')
@@ -121,10 +126,22 @@ const handlerSearch = debounce(async () => {
         num += icons[iconsKey].length
     }
 
-    searchCategory.value = category
-    searchIcons.value = icons
+    const orderCategory: Record<string, string> = {}
+    const orderIcons: Record<string, any[]> = {}
+
+    for (let categoryKey in Category) {
+        if (categoryKey in category) {
+            orderCategory[categoryKey] = category[categoryKey]
+        }
+        if (categoryKey in icons) {
+            orderIcons[categoryKey] = icons[categoryKey]
+        }
+    }
+
+    searchCategory.value = orderCategory
+    searchIcons.value = orderIcons
     searchTotal.value = num
-    expandKeys.value = Object.keys(category)
+    expandKeys.value = Object.keys(orderCategory)
 }, 5)
 
 // 搜索
@@ -175,18 +192,7 @@ const search = () => {
             height: 100%;
             overflow-y: auto;
             border-left: 1px solid var(--color-border);
-
-            .arco-collapse-item {
-                border: 0;
-
-                .arco-collapse-item-header {
-                    border: 0;
-                }
-
-                .arco-collapse-item-content {
-                    background-color: var(--color-bg-2);
-                }
-            }
+            padding: 0 30px
         }
     }
 }

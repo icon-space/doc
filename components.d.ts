@@ -36,6 +36,7 @@ declare module '@vue/runtime-core' {
     ASpace: typeof import('@arco-design/web-vue')['Space']
     ATag: typeof import('@arco-design/web-vue')['Tag']
     Card: typeof import('./src/components/Card.vue')['default']
+    Expand: typeof import('./src/components/Expand.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <div class="left" ref="target">
+        <div class="left" ref="target" :id="`i-${name}`">
             <IconSpace v-if="targetIsVisible" :type="name"></IconSpace>
         </div>
         <div class="right" v-if="!card">
@@ -41,7 +41,7 @@ import useOptionStore from '../stores/option'
 import { Message } from '@arco-design/web-vue'
 import { IconSpace } from '@icon-space/vue-next/es/all'
 import { DEFAULT_ICON_CONFIGS } from '@icon-space/vue-next'
-import { download } from '../util'
+import { download, getSvgDom } from '../util'
 
 const props = defineProps({
     // icon name
@@ -140,7 +140,7 @@ const copyVueCode = async () => {
     success(svg)
 }
 const downloadSvg = async () => {
-    const svg = target.value?.firstElementChild?.innerHTML
+    const svg = getSvgDom(props.name)
     if (!svg) {
         return
     }
