@@ -1,0 +1,21 @@
+export default {
+    searchIcon: '搜索图标',
+    selectedOnly: '只看选中',
+    batchDownload: '批量下载SVG',
+    iconSize: '图标大小',
+    strokeWidth: '线段粗细',
+    iconTheme: '图标风格（颜色）',
+    outline: '线性',
+    filled: '填充',
+    twoTone: '双色',
+    multiColor: '多色',
+    strokeColor: '描边颜色',
+    fillColor: '填充颜色',
+    outerStrokeColor: '外部描边颜色',
+    outerFillColor: '外部填充颜色',
+    interStrokeColor: '内部描边颜色',
+    interFillColor: '内部填充颜色',
+    linecap: '端点类型',
+    linejoin: '拐点类型',
+    reset: '重置配置'
+}

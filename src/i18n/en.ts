@@ -1,0 +1,21 @@
+export default {
+    searchIcon: 'search icons',
+    selectedOnly: 'Selected Only',
+    batchDownload: 'Batch Download SVG',
+    iconSize: 'Icon size',
+    strokeWidth: 'Stroke width',
+    iconTheme: 'Icon theme (color)',
+    outline: 'outline',
+    filled: 'filled',
+    twoTone: 'two-tone',
+    multiColor: 'multi-color',
+    strokeColor: 'Stroke color',
+    fillColor: 'Fill color',
+    outerStrokeColor: 'Outer stroke color',
+    outerFillColor: 'Outer fill color',
+    interStrokeColor: 'Inner stroke color',
+    interFillColor: 'Inner fill color',
+    linecap: 'Linecap',
+    linejoin: 'Linejoin',
+    reset: 'Reset'
+}
