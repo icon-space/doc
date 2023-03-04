@@ -1,7 +1,7 @@
 <template>
-    <div class="card">
+    <div class="card" ref="target">
         <div class="left">
-            <IconSpace :type="name"></IconSpace>
+            <IconSpace v-if="targetIsVisible" :type="name"></IconSpace>
         </div>
         <div class="right" v-if="!card">
             <a-space direction="vertical" size="mini" v-if="site.lang === 'zh'" class="title">
@@ -17,11 +17,11 @@
 </template>
 
 <script setup lang="ts">
+import { useIntersectionObserver } from '@vueuse/core'
 import useSiteStore from '../stores/site'
 import { IconSpace } from '@icon-space/vue-next/es/all'
 import { DEFAULT_ICON_CONFIGS } from "@icon-space/vue-next";
-
-const site = useSiteStore()
+import {ref} from "vue";
 
 const props = defineProps({
     // icon name
@@ -39,6 +39,21 @@ const props = defineProps({
         default: false
     }
 })
+
+const site = useSiteStore()
+
+//此target要和被监视的目标模块想关联
+const target = ref<HTMLElement>()
+const targetIsVisible = ref(false)
+
+const { stop } = useIntersectionObserver(target, ([{ isIntersecting }]) => {
+    if (isIntersecting) {
+        targetIsVisible.value = true
+        stop();
+    }
+})
+
+
 </script>
 
 <style scoped lang="scss">

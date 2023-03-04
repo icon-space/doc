@@ -15,6 +15,7 @@
     "@arco-design/web-vue": "^2.43.2",
     "@icon-space/svg": "^1.0.1",
     "@icon-space/vue-next": "^1.0.1",
+    "@vueuse/core": "^9.13.0",
     "colorpicker-v3": "^2.10.2",
     "pinia": "^2.0.32",
     "pinia-plugin-persistedstate": "^3.1.0",
