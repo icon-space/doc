@@ -24,7 +24,10 @@ export default defineConfig(({ mode }) => {
                 ]
             }),
             chunkSplitPlugin({
-                strategy: 'default'
+                strategy: 'default',
+                customSplitting: {
+                    __commonjsHelpers__: [/some unreachable check/]
+                }
             })
         ],
         build: {
