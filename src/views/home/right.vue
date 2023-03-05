@@ -285,6 +285,7 @@ const reset = () => {
         justify-content: center;
         height: 60px;
         border-bottom: 1px solid var(--color-border);
+        box-sizing: border-box;
     }
 
     .option {
