@@ -1,7 +1,20 @@
 <template>
     <div class="card">
         <div class="left" ref="target" :id="`i-${name}`">
-            <IconSpace :type="name"></IconSpace>
+            <a-dropdown @select="action" v-if="card" trigger="hover">
+                <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center">
+                    <IconSpace :type="name"></IconSpace>
+                </div>
+                <template #content>
+                    <a-doption value="copyName">{{ $t('copyName') }}</a-doption>
+                    <a-doption value="copyCamelCase">{{ $t('copyCamelCase') }}</a-doption>
+                    <a-doption value="copySvg">{{ $t('copySvg') }}</a-doption>
+                    <a-doption value="copyReactCode">{{ $t('copyReactCode') }}</a-doption>
+                    <a-doption value="copyVueCode">{{ $t('copyVueCode') }}</a-doption>
+                    <a-doption value="downloadSvg">{{ $t('downloadSvg') }}</a-doption>
+                </template>
+            </a-dropdown>
+            <IconSpace v-else :type="name"></IconSpace>
         </div>
         <div class="right" v-if="!card">
             <a-space direction="vertical" size="mini" v-if="site.lang === 'zh'" class="title">

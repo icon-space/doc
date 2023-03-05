@@ -1,16 +1,22 @@
-import { ref, watch} from "vue";
-import { useScroll } from '@vueuse/core'
+import {onBeforeMount, ref} from "vue";
 import allIconItems, { total, IconItem, allCategoryItems, allCategoryCounts } from '../../category_list'
 import { debounce } from "../../util";
 
-const size = 41
+
+export interface IconGroup {
+    // key: IconKey | IconItem[]
+    key: string
+
+    header: boolean
+    val: IconItem | IconItem[]
+}
 
 const useIcons = () => {
-    // 展示开始的位置
-    const showStart = ref<number>(0)
-    // 展示结束的位置
-    const showEnd = ref<number>(size)
-    const list = ref<IconItem[]>(allIconItems.slice(0, size))
+    const target = ref<any>()
+    // 列表
+    const list = ref<IconGroup[]>([])
+    // 展示模式
+    const mode = ref<'list' | 'card'>('list')
     const icons = ref<IconItem[]>(allIconItems)
     // 搜索关键字
     const keyword = ref<string>('')
@@ -58,87 +64,115 @@ const useIcons = () => {
                 }
             }
         }
+
         icons.value = searchIcons
-        showStart.value = 0
-        showEnd.value = size
         searchTotal.value = count
         categoryCount.value = searchCategoryCount
-    }, 10)
+
+        iconsGroup()
+    }, 3)
+
+
+    // 分组
+    const iconsGroup = () => {
+
+        const size = mode.value === 'list' ? 4 : 12
+        const items: IconGroup[] = []
+
+        let index = 1
+        let group:IconItem[] = []
+
+        icons.value.forEach(value => {
+            if (value.kind === 'header') {
+                if (group.length) {
+                    index = 1
+                    items.push({
+                        key: group[0].key,
+                        header: false,
+                        val: group
+                    })
+                    group = []
+                }
+                items.push({
+                    key: value.key,
+                    header: true,
+                    val: value
+                })
+                return
+            }
+            if (index > size) {
+                index = 1
+                group = []
+            }
+            if (index <= size) {
+                group.push(value)
+            }
+            if (index === size) {
+                items.push({
+                    key: value.key,
+                    header: false,
+                    val: group
+                })
+            }
+            index ++
+        })
+
+        if (group.length) {
+            items.push({
+                key: group[0].key,
+                header: false,
+                val: group
+            })
+        }
+
+        list.value = items
+
+    }
+
+    // 展示模式切换时
+    const modeChange = (value: string | number | boolean) => {
+        iconsGroup()
+    }
 
     // 搜素
     const search = () => {
         if (keyword.value.trim().length === 0) {
             icons.value = allIconItems
-            showStart.value = 0
-            showEnd.value = size
             searchTotal.value = total
             categoryCount.value = allCategoryCounts
+            iconsGroup()
             return
         }
         handlerSearch()
     }
-
-    const scroll = ref<HTMLElement>()
-
-    const { arrivedState, isScrolling, y } = useScroll(scroll)
-
-
-    watch(arrivedState, (value, oldValue, onCleanup) => {
-        if (!value.top && !value.bottom) {
-            return
-        }
-        if (value.top && showStart.value > 0) {
-            let start = showStart.value
-            start -= size
-            if (start < 0) {
-                start = 0
-            }
-            showStart.value = start
-        }
-        if (value.bottom && showEnd.value < icons.value.length) {
-            let end = showEnd.value
-            end += size
-            if (end > icons.value.length) {
-                end = icons.value.length
-            }
-            showEnd.value = end
-        }
-    })
-
-
 
     // 锚点被选择时
     const anchorSelect = (hash: string | undefined, preHash: string) => {
         if (!hash) {
             return
         }
-        const key = hash?.substring(1)
-        for (let index in icons.value) {
-            const item = icons.value[index]
-            if (item.kind === 'icon') {
-                continue
-            }
-            if (item.key === key) {
-                showStart.value = Number(index)
-                showEnd.value = showStart.value + size
-                break
-            }
-        }
+        target.value.scrollIntoView({
+            key: hash.substring(1),
+            align: 'auto'
+        })
     }
+
+    onBeforeMount(() => {
+        iconsGroup()
+    })
 
 
     return {
+        target,
         list,
-        scroll,
-        icons,
+        mode,
         categoryCount,
-        showStart,
-        showEnd,
         keyword,
         searchTotal,
+
+        modeChange,
         search,
-        anchorSelect,
-        arrivedState, isScrolling, y
+        anchorSelect
     }
 }
 

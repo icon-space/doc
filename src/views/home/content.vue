@@ -4,7 +4,7 @@
             <a-space size="large" align="center">
                 <a-input-search :style="{ width: '320px' }" :placeholder="$t('searchIcon')" allow-clear @input="search" v-model="keyword" />
                 <a-checkbox value="1">{{ $t('selectedOnly') }}：{{ 0 }} / {{ searchTotal }}</a-checkbox>
-                <a-radio-group type="button" v-model="mode">
+                <a-radio-group type="button" v-model="mode" @change="modeChange">
                     <a-radio value="list">
                         <ViewGridList :size="22" :strokeWidth="2" theme="outline" strokeLinecap="round" strokeLinejoin="round" fill="currentColor"></ViewGridList>
                     </a-radio>
@@ -16,33 +16,39 @@
         </div>
         <div class="layout-icons">
             <a-layout-sider class="layout-side-left" ref="anchor">
-                <a-anchor line-less style="width: 100%" :change-hash="false" scroll-container=".icons" @change="handlerAnchorChange"  @select="anchorSelect">
+                <a-anchor line-less style="width: 100%" :change-hash="false" scroll-container=".arco-list-content" @change="handlerAnchorChange"  @select="anchorSelect">
                     <a-anchor-link :id="`${k}-anchor`" :href="`#${k}`" v-for="(v, k) in categoryCount" :key="k"> {{ site.lang === 'zh' ? Category[k] : k }}（{{ v }}） </a-anchor-link>
                 </a-anchor>
             </a-layout-sider>
             <div class="icons" ref="scroll">
-                <a-row :gutter="[16, 16]">
-                    <template v-for="item in icons.slice(showStart, showEnd)" :key="item.key">
-                        <template v-if="item.kind === 'header'">
-                            <a-col :span="24">
-                                <h2 :id="item.key">{{ site.lang === 'zh' ? item.name : item.key }}（{{categoryCount[item.key]}}）</h2>
-                            </a-col>
-                        </template>
-                        <template v-if="item.kind === 'icon'" >
-                            <a-col :span="mode === 'card' ? 2 : 6">
-                                <Card :name="item.key" :zh-name="item.name" :card="mode === 'card'"></Card>
-                            </a-col>
-                        </template>
+                <a-list
+                    ref="target"
+                    :data="list"
+                    :bordered="false"
+                    :virtual-list-props="{
+                      height: 'calc(100vh - 140px)',
+                    }"
+                >
+                    <template #item="{ item, index }">
+                        <a-list-item :key="item.key">
+                            <a-space fill style="margin-bottom: 8px">
+                                <template v-if="item.header">
+                                    <h2 :id="item.key">{{ site.lang === 'zh' ? item.val.name : item.val.key }}（{{categoryCount[item.val.key]}}）</h2>
+                                </template>
+                                <template v-else v-for="val in item.val" :key="val.key">
+                                    <Card :name="val.key" :zh-name="val.name" :card="mode === 'card'"></Card>
+                                </template>
+                            </a-space>
+                        </a-list-item>
                     </template>
-                </a-row>
-
+                </a-list>
             </div>
         </div>
     </a-layout-content>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import {ViewGridList, ViewGridCard, IconProvider} from "@icon-space/vue-next";
 import Card from "../../components/Card.vue";
 import Category from '../../category'
@@ -62,22 +68,18 @@ const handlerAnchorChange = (hash: string) => {
     document.querySelector(id)?.scrollIntoView(false)
 }
 
-// 展示模式
-const mode = ref<string>('list')
-
 const {
+    target,
     list,
-    scroll,
-    icons,
+    mode,
     categoryCount,
-    showStart,
-    showEnd,
     keyword,
     searchTotal,
-    search,
-    anchorSelect,
-} = useIcons()
 
+    modeChange,
+    search,
+    anchorSelect
+} = useIcons()
 
 </script>
 
@@ -122,9 +124,17 @@ const {
         .icons {
             height: 100%;
             width: 100%;
-            overflow-y: auto;
             border-left: 1px solid var(--color-border);
-            padding: 0 30px
+            box-sizing: border-box;
+
+            .arco-list-content {
+                padding: 0 30px;
+
+                .arco-list-item {
+                    border: 0 !important;
+                    padding: 0 !important;
+                }
+            }
         }
     }
 }
