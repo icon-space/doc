@@ -16,7 +16,7 @@
         </div>
         <div class="layout-icons">
             <a-layout-sider class="layout-side-left" ref="anchor">
-                <a-anchor line-less style="width: 100%" :change-hash="false" scroll-container=".arco-list-content" @change="handlerAnchorChange"  @select="anchorSelect">
+                <a-anchor line-less style="width: 100%" :change-hash="false" scroll-container=".arco-list-content"  @select="anchorSelect">
                     <a-anchor-link :id="`${k}-anchor`" :href="`#${k}`" v-for="(v, k) in categoryCount" :key="k"> {{ site.lang === 'zh' ? Category[k] : k }}（{{ v }}） </a-anchor-link>
                 </a-anchor>
             </a-layout-sider>
@@ -63,10 +63,7 @@ const option = useOptionStore()
 IconProvider(option.$state)
 
 const anchor = ref<HTMLElement>()
-const handlerAnchorChange = (hash: string) => {
-    const id = hash + '-anchor'
-    document.querySelector(id)?.scrollIntoView(false)
-}
+
 
 const {
     target,
