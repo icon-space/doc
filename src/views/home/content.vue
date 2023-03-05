@@ -2,8 +2,8 @@
     <a-layout-content class="layout-content">
         <div class="search">
             <a-space size="large" align="center">
-                <a-input-search :style="{ width: '320px' }" :placeholder="$t('searchIcon')" allow-clear @input="search" v-model="keyword" />
-                <a-checkbox value="1">{{ $t('selectedOnly') }}：{{ 0 }} / {{ searchTotal }}</a-checkbox>
+                <a-input-search :style="{ width: '320px' }" :placeholder="$t('searchIcon')" allow-clear @input="search" @press-enter="search" @clear="search" v-model="keyword" />
+<!--                <a-checkbox value="1">{{ $t('selectedOnly') }}：{{ 0 }} / {{ searchTotal }}</a-checkbox>-->
                 <a-radio-group type="button" v-model="mode" @change="modeChange">
                     <a-radio value="list">
                         <ViewGridList :size="22" :strokeWidth="2" theme="outline" strokeLinecap="round" strokeLinejoin="round" fill="currentColor"></ViewGridList>

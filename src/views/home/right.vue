@@ -1,7 +1,7 @@
 <template>
     <a-layout-sider class="layout-side-right" :width="272">
         <div class="download">
-            <a-button type="primary">{{ $t('batchDownload') }}</a-button>
+<!--            <a-button type="primary">{{ $t('batchDownload') }}</a-button>-->
         </div>
         <div class="option">
             <a-form :model="option" layout="vertical">

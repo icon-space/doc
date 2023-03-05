@@ -2,7 +2,7 @@
     <a-layout class="layout">
         <a-layout-header class="layout-header">
             <a-row align="center" class="header">
-                <a-col :span="12" class="left"> IconSpace(未完善) </a-col>
+                <a-col :span="12" class="left"> IconSpace </a-col>
                 <a-col :span="12" class="right">
                     <a-space size="medium">
                         <a-dropdown @select="setLanguage">
@@ -25,7 +25,12 @@
                         </a-button>
                         <a-button shape="circle" @click="github">
                             <template #icon>
-                                <Github size="20"></Github>
+                                <GithubOne size="20"></GithubOne>
+                            </template>
+                        </a-button>
+                        <a-button shape="circle" @click="github">
+                            <template #icon>
+                                <Bug size="20"></Bug>
                             </template>
                         </a-button>
                     </a-space>
@@ -39,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { Translate, SunOne, Moon, Github } from "@icon-space/vue-next";
+import { Translate, SunOne, Moon, GithubOne, Bug } from "@icon-space/vue-next";
 import useSiteStore, { LangType } from '../stores/site'
 
 const site = useSiteStore()
@@ -59,6 +64,10 @@ const setTheme = () => {
 
 const github = () => {
     window.open('https://github.com/icon-space/IconSpace', '_blank')
+}
+
+const bug = () => {
+    window.open('https://github.com/icon-space/doc/issues', '_blank')
 }
 </script>
 
