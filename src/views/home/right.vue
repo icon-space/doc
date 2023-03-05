@@ -272,6 +272,7 @@ const reset = () => {
     .arco-input-size-mini {
         font-size: 12px !important;
     }
+
 }
 
 .layout-side-right {
@@ -293,6 +294,10 @@ const reset = () => {
         padding: 20px;
         box-sizing: border-box;
         overflow-y: auto;
+
+        .zs-color-picker-btn-color {
+            border: 0;
+        }
     }
 }
 </style>
