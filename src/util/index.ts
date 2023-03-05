@@ -41,3 +41,12 @@ export const download = (downfile: Blob) => {
 export const getSvgDom = (name: string): string | undefined => {
     return document.querySelector(`#i-${name}`)?.firstElementChild?.innerHTML
 }
+
+
+// 转大驼峰
+export const toCamelCase = (name:string): string => {
+    return name
+        .split('-')
+        .map(item => item[0] && item[0].toUpperCase() + item.substring(1))
+        .join('')
+}

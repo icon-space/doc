@@ -165,7 +165,7 @@
                                 <a-radio value="round">
                                     <template #radio="{ checked }">
                                         <a-tag :checked="checked" checkable bordered :color="checked ? 'blue' : ''" style="padding: 14px 28px">
-                                            <IconSpace type="endpoint-round" v-bind="DEFAULT_ICON_CONFIGS" :size="20" fill="currentColor"></IconSpace>
+                                            <EndpointRound :size="20"></EndpointRound>
                                         </a-tag>
                                     </template>
                                 </a-radio>
@@ -174,7 +174,7 @@
                                 <a-radio value="butt">
                                     <template #radio="{ checked }">
                                         <a-tag :checked="checked" checkable bordered :color="checked ? 'blue' : ''" style="padding: 14px 28px">
-                                            <IconSpace type="endpoint-flat" v-bind="DEFAULT_ICON_CONFIGS" :size="20" fill="currentColor"></IconSpace>
+                                            <EndpointFlat :size="20"></EndpointFlat>
                                         </a-tag>
                                     </template>
                                 </a-radio>
@@ -183,7 +183,7 @@
                                 <a-radio value="square">
                                     <template #radio="{ checked }">
                                         <a-tag :checked="checked" checkable bordered :color="checked ? 'blue' : ''" style="padding: 14px 28px">
-                                            <IconSpace type="endpoint-square" v-bind="DEFAULT_ICON_CONFIGS" :size="20" fill="currentColor"></IconSpace>
+                                            <EndpointSquare :size="20"></EndpointSquare>
                                         </a-tag>
                                     </template>
                                 </a-radio>
@@ -198,7 +198,7 @@
                                 <a-radio value="round">
                                     <template #radio="{ checked }">
                                         <a-tag :checked="checked" checkable bordered :color="checked ? 'blue' : ''" style="padding: 14px 28px">
-                                            <IconSpace type="node-round" v-bind="DEFAULT_ICON_CONFIGS" :size="20" fill="currentColor"></IconSpace>
+                                            <NodeRound :size="20"></NodeRound>
                                         </a-tag>
                                     </template>
                                 </a-radio>
@@ -207,7 +207,7 @@
                                 <a-radio value="miter">
                                     <template #radio="{ checked }">
                                         <a-tag :checked="checked" checkable bordered :color="checked ? 'blue' : ''" style="padding: 14px 28px">
-                                            <IconSpace type="node-flat" v-bind="DEFAULT_ICON_CONFIGS" :size="20" fill="currentColor"></IconSpace>
+                                            <NodeFlat :size="20"></NodeFlat>
                                         </a-tag>
                                     </template>
                                 </a-radio>
@@ -216,7 +216,7 @@
                                 <a-radio value="bevel">
                                     <template #radio="{ checked }">
                                         <a-tag :checked="checked" checkable bordered :color="checked ? 'blue' : ''" style="padding: 14px 28px">
-                                            <IconSpace type="node-square" v-bind="DEFAULT_ICON_CONFIGS" :size="20" fill="currentColor"></IconSpace>
+                                            <NodeSquare :size="20"></NodeSquare>
                                         </a-tag>
                                     </template>
                                 </a-radio>
@@ -233,8 +233,14 @@
 </template>
 
 <script setup lang="ts">
-import { DEFAULT_ICON_CONFIGS } from '@icon-space/vue-next'
-import { IconSpace } from '@icon-space/vue-next/es/all'
+import {
+    EndpointRound,
+    EndpointFlat,
+    EndpointSquare,
+    NodeRound,
+    NodeFlat,
+    NodeSquare,
+} from "@icon-space/vue-next";
 import ColorPicker from 'colorpicker-v3' // 注册组件
 import 'colorpicker-v3/style.css'
 import useSiteStore from '../../stores/site'
@@ -245,9 +251,7 @@ const option = useOptionStore()
 
 // 重置
 const reset = () => {
-    console.log('reset start')
     option.reset()
-    console.log('reset end')
 }
 </script>
 

@@ -8,7 +8,7 @@
                         <a-dropdown @select="setLanguage">
                             <a-button shape="circle">
                                 <template #icon>
-                                    <IconSpace type="translate" size="20"></IconSpace>
+                                    <Translate size="20"></Translate>
                                 </template>
                             </a-button>
                             <template #content>
@@ -19,13 +19,13 @@
 
                         <a-button shape="circle" @click="setTheme">
                             <template #icon>
-                                <IconSpace type="sun-one" size="20" v-if="site.theme === 'dark'"></IconSpace>
-                                <IconSpace type="moon" size="20" v-else></IconSpace>
+                                <SunOne size="20" v-if="site.theme === 'dark'"></SunOne>
+                                <Moon size="20" v-else></Moon>
                             </template>
                         </a-button>
                         <a-button shape="circle" @click="github">
                             <template #icon>
-                                <IconSpace type="github" size="20"></IconSpace>
+                                <Github size="20"></Github>
                             </template>
                         </a-button>
                     </a-space>
@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { IconSpace } from '@icon-space/vue-next/es/all'
+import { Translate, SunOne, Moon, Github } from "@icon-space/vue-next";
 import useSiteStore, { LangType } from '../stores/site'
 
 const site = useSiteStore()

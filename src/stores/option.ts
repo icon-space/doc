@@ -67,7 +67,8 @@ const useOptionStore = defineStore({
         rtl: def.rtl,
         prefix: def.prefix
     }),
-    getters: {},
+    getters: {
+    },
     actions: {
         reset() {
             this.size = def.size

@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <div class="left" ref="target" :id="`i-${name}`">
-            <IconSpace v-if="targetIsVisible" :type="name"></IconSpace>
+            <IconSpace :type="name"></IconSpace>
         </div>
         <div class="right" v-if="!card">
             <a-space direction="vertical" size="mini" v-if="site.lang === 'zh'" class="title">
@@ -34,7 +34,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useIntersectionObserver } from '@vueuse/core'
 import useClipboard from 'vue-clipboard3'
 import useSiteStore from '../stores/site'
 import useOptionStore from '../stores/option'
@@ -64,16 +63,7 @@ const { toClipboard } = useClipboard()
 const site = useSiteStore()
 const option = useOptionStore()
 
-//此target要和被监视的目标模块想关联
 const target = ref<HTMLElement>()
-const targetIsVisible = ref(false)
-
-const { stop } = useIntersectionObserver(target, ([{ isIntersecting }]) => {
-    if (isIntersecting) {
-        targetIsVisible.value = true
-        stop()
-    }
-})
 
 const success = (text: string) => {
     Message.success(text)
@@ -92,12 +82,12 @@ const toCamelCase = (): string => {
 
 const copyName = async () => {
     await toClipboard(props.name)
-    success('复制成功')
+    success(props.name)
 }
 const copyCamelCase = async () => {
     const name = toCamelCase()
     await toClipboard(name)
-    success('复制成功')
+    success(name)
 }
 const copySvg = async () => {
     const svg = target.value?.firstElementChild?.innerHTML
@@ -175,6 +165,7 @@ const action = (val: any) => {
 .card {
     display: flex;
     height: 64px;
+    width: min-content;
     box-sizing: border-box;
 
     border: 1px solid var(--color-border);
