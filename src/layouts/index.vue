@@ -28,7 +28,7 @@
                                 <GithubOne size="20"></GithubOne>
                             </template>
                         </a-button>
-                        <a-button shape="circle" @click="github">
+                        <a-button shape="circle" @click="bug">
                             <template #icon>
                                 <Bug size="20"></Bug>
                             </template>
