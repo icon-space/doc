@@ -6,10 +6,10 @@
                 <a-checkbox value="1">{{ $t('selectedOnly') }}：{{ 0 }} / {{ searchTotal }}</a-checkbox>
                 <a-radio-group type="button" v-model="mode">
                     <a-radio value="list">
-                        <ViewGridList v-bind="baseIcon"></ViewGridList>
+                        <ViewGridList :size="22" :strokeWidth="2" theme="outline" strokeLinecap="round" strokeLinejoin="round" fill="currentColor"></ViewGridList>
                     </a-radio>
                     <a-radio value="card">
-                        <ViewGridCard v-bind="baseIcon"></ViewGridCard>
+                        <ViewGridCard :size="22" :strokeWidth="2" theme="outline" strokeLinecap="round" strokeLinejoin="round" fill="currentColor"></ViewGridCard>
                     </a-radio>
                 </a-radio-group>
             </a-space>
@@ -52,15 +52,6 @@ import useOptionStore from "../../stores/option";
 
 const site = useSiteStore()
 const option = useOptionStore()
-
-const baseIcon = {
-    size: 22,
-    strokeWidth: 2,
-    theme: 'outline',
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
-    fill: 'currentColor'
-}
 
 // 设置图标属性
 IconProvider(option.$state)
