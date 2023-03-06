@@ -113,6 +113,7 @@ const useIcons = () => {
                     header: false,
                     val: group
                 })
+                group = []
             }
             index ++
         })
