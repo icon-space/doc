@@ -11,6 +11,16 @@ export interface IconGroup {
     val: IconItem | IconItem[]
 }
 
+
+const include = (word: string, keywords: string[]):boolean => {
+    for (let keyword of keywords) {
+        if (word.indexOf(keyword) > -1) {
+            return true
+        }
+    }
+    return false
+}
+
 const useIcons = () => {
     const target = ref<any>()
     // 列表
@@ -31,6 +41,9 @@ const useIcons = () => {
         const categorySet = new Set<string>()
         const categoryGroupSet = new Set<string>()
         let count = 0
+
+        const keywords = keyword.value.toLowerCase().split(/[\s]+/)
+
         for (let item of allIconItems) {
             if (categoryGroupSet.has(item.category)) {
                 searchIcons.push(item)
@@ -38,7 +51,7 @@ const useIcons = () => {
             }
             if (item.kind === 'header') {
                 for (let k of item.keywords) {
-                    if (k.indexOf(keyword.value) !== -1) {
+                    if (include(k, keywords)) {
                         searchIcons.push(item)
                         categoryGroupSet.add(item.category)
                         categorySet.add(item.category)
@@ -50,7 +63,7 @@ const useIcons = () => {
             }
             if (item.kind === 'icon') {
                 for (let k of item.keywords) {
-                    if (k.indexOf(keyword.value) !== -1) {
+                    if (include(k, keywords)) {
                         if (!categorySet.has(item.category)) {
                             searchIcons.push(allCategoryItems[item.category])
                             categorySet.add(item.category)

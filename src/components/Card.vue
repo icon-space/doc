@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card" :class="{'card-checked': checked }" @click="click">
         <div class="left" ref="target" :id="`i-${name}`">
             <a-dropdown @select="action" v-if="card" trigger="hover">
                 <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center">
@@ -77,6 +77,12 @@ const site = useSiteStore()
 const option = useOptionStore()
 
 const target = ref<HTMLElement>()
+
+const checked = ref(false)
+
+const click = () => {
+    checked.value = !checked.value
+}
 
 const success = (text: string) => {
     Message.success(text)
@@ -174,6 +180,13 @@ const action = (val: any) => {
 <style lang="scss">
 .arco-dropdown-list-wrapper {
     max-height: 250px !important;
+}
+.card-checked {
+    border: 1px solid rgb(var(--primary-6)) !important;
+
+    &:hover {
+        box-shadow: none !important;
+    }
 }
 .card {
     display: flex;
