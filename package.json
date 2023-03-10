@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.43.2",
-    "@icon-space/vue-next": "^1.0.1",
+    "@icon-space/vue-next": "1.0.2",
     "@vueuse/core": "^9.13.0",
     "colorpicker-v3": "^2.10.2",
     "pinia": "^2.0.32",

@@ -1,4 +1,4 @@
-export const total = 2666
+export const total = 2672
 
 export interface IconItem {
     kind: 'header' | 'icon'
@@ -26,7 +26,7 @@ export const allCategoryCounts: Record<string, number> = {
     "Makeups": 46,
     "Graphics": 19,
     "Build": 70,
-    "Arrows": 137,
+    "Arrows": 139,
     "Communicate": 27,
     "Travel": 101,
     "Components": 8,
@@ -34,7 +34,7 @@ export const allCategoryCounts: Record<string, number> = {
     "Operate": 31,
     "Baby": 47,
     "Energy": 32,
-    "Brand": 85,
+    "Brand": 89,
     "Life": 25,
     "Time": 17,
     "Foods": 121,
@@ -239,7 +239,7 @@ export const allCategoryItems: Record<string, IconItem> = {
             "arrows",
             "箭头方向"
         ],
-        "count": 137
+        "count": 139
     },
     "Communicate": {
         "kind": "header",
@@ -328,7 +328,7 @@ export const allCategoryItems: Record<string, IconItem> = {
             "brand",
             "品牌"
         ],
-        "count": 85
+        "count": 89
     },
     "Life": {
         "kind": "header",
@@ -1444,6 +1444,7 @@ const allIconItems: IconItem[] = [
             "悬浮窗",
             "悬浮框",
             "悬浮",
+            "画中画",
             "float"
         ],
         "count": 0
@@ -6381,13 +6382,13 @@ const allIconItems: IconItem[] = [
     {
         "kind": "icon",
         "key": "block",
-        "name": "行内公式",
+        "name": "块公式",
         "category": "Edit",
         "keywords": [
             "edit",
             "编辑",
             "block",
-            "行内公式",
+            "块公式",
             "公式"
         ],
         "count": 0
@@ -8134,13 +8135,13 @@ const allIconItems: IconItem[] = [
     {
         "kind": "icon",
         "key": "inline",
-        "name": "块公式",
+        "name": "行内公式",
         "category": "Edit",
         "keywords": [
             "edit",
             "编辑",
             "inline",
-            "块公式",
+            "行内公式",
             "公式"
         ],
         "count": 0
@@ -12661,13 +12662,12 @@ const allIconItems: IconItem[] = [
     {
         "kind": "icon",
         "key": "internal-data",
-        "name": "内部数据\n",
+        "name": "内部数据",
         "category": "Abstract",
         "keywords": [
             "abstract",
             "抽象图形",
             "internal-data",
-            "内部数据\n",
             "内部数据",
             "数据",
             "数据展示",
@@ -17717,7 +17717,9 @@ const allIconItems: IconItem[] = [
             "attention",
             "注意",
             "提示",
-            "警示"
+            "警示",
+            "关于",
+            "about"
         ],
         "count": 0
     },
@@ -17991,7 +17993,9 @@ const allIconItems: IconItem[] = [
             "info",
             "信息",
             "注解",
-            "提示"
+            "提示",
+            "关于",
+            "about"
         ],
         "count": 0
     },
@@ -20708,7 +20712,7 @@ const allIconItems: IconItem[] = [
             "arrows",
             "箭头方向"
         ],
-        "count": 137
+        "count": 139
     },
     {
         "kind": "icon",
@@ -22951,6 +22955,39 @@ const allIconItems: IconItem[] = [
         "count": 0
     },
     {
+        "kind": "icon",
+        "key": "expand-all",
+        "name": "全部展开",
+        "category": "Arrows",
+        "keywords": [
+            "arrows",
+            "箭头方向",
+            "expand-all",
+            "全部展开",
+            "打开",
+            "张开",
+            "展示"
+        ],
+        "count": 0
+    },
+    {
+        "kind": "icon",
+        "key": "collapse-all",
+        "name": "全部折叠",
+        "category": "Arrows",
+        "keywords": [
+            "arrows",
+            "箭头方向",
+            "collapse-all",
+            "全部折叠",
+            "收缩",
+            "关闭",
+            "收起",
+            "隐藏"
+        ],
+        "count": 0
+    },
+    {
         "kind": "header",
         "key": "Communicate",
         "name": "交流沟通",
@@ -25143,14 +25180,15 @@ const allIconItems: IconItem[] = [
     },
     {
         "kind": "icon",
-        "key": "platte",
+        "key": "palette",
         "name": "调色盘",
         "category": "Components",
         "keywords": [
             "components",
             "界面组件",
-            "platte",
+            "palette",
             "调色盘",
+            "调色板",
             "美术",
             "绘画",
             "颜色",
@@ -27855,7 +27893,7 @@ const allIconItems: IconItem[] = [
             "brand",
             "品牌"
         ],
-        "count": 85
+        "count": 89
     },
     {
         "kind": "icon",
@@ -29323,9 +29361,91 @@ const allIconItems: IconItem[] = [
             "dingtalk",
             "钉钉",
             "chat",
+            "dingding",
             "聊天",
             "IM",
             "即时通讯"
+        ],
+        "count": 0
+    },
+    {
+        "kind": "icon",
+        "key": "zhihu",
+        "name": "知乎",
+        "category": "Brand",
+        "keywords": [
+            "brand",
+            "品牌",
+            "zhihu",
+            "知乎",
+            "问答",
+            "解答",
+            "quora",
+            "question",
+            "answer"
+        ],
+        "count": 0
+    },
+    {
+        "kind": "icon",
+        "key": "bilibili",
+        "name": "B站",
+        "category": "Brand",
+        "keywords": [
+            "brand",
+            "品牌",
+            "bilibili",
+            "B站",
+            "小电视",
+            "干杯",
+            "哔哩哔哩",
+            "视频",
+            "二次元",
+            "动漫",
+            "up主"
+        ],
+        "count": 0
+    },
+    {
+        "kind": "icon",
+        "key": "juejin",
+        "name": "掘金",
+        "category": "Brand",
+        "keywords": [
+            "brand",
+            "品牌",
+            "juejin",
+            "掘金",
+            "技术",
+            "程序员",
+            "稀土掘金",
+            "问答",
+            "解答",
+            "开发者",
+            "交流",
+            "沸点"
+        ],
+        "count": 0
+    },
+    {
+        "kind": "icon",
+        "key": "discord",
+        "name": "Discord",
+        "category": "Brand",
+        "keywords": [
+            "brand",
+            "品牌",
+            "discord",
+            "Discord",
+            "社群",
+            "即时通话",
+            "聊天",
+            "玩家",
+            "交流",
+            "chat",
+            "im",
+            "group",
+            "talk"
         ],
         "count": 0
     },
@@ -38025,34 +38145,12 @@ const allIconItems: IconItem[] = [
     {
         "kind": "icon",
         "key": "camera-three",
-        "name": "智能摄像头",
-        "category": "Hardware",
-        "keywords": [
-            "hardware",
-            "硬件",
-            "camera-three",
-            "智能摄像头",
-            "摄像",
-            "拍摄",
-            "记录",
-            "录像",
-            "录制",
-            "检测",
-            "探头",
-            "抓拍",
-            "偷拍"
-        ],
-        "count": 0
-    },
-    {
-        "kind": "icon",
-        "key": "camera-two",
         "name": "相机",
         "category": "Hardware",
         "keywords": [
             "hardware",
             "硬件",
-            "camera-two",
+            "camera-three",
             "相机",
             "照相机",
             "傻瓜机",
@@ -38061,6 +38159,28 @@ const allIconItems: IconItem[] = [
             "记录",
             "记载",
             "画面",
+            "抓拍",
+            "偷拍"
+        ],
+        "count": 0
+    },
+    {
+        "kind": "icon",
+        "key": "camera-two",
+        "name": "智能摄像头",
+        "category": "Hardware",
+        "keywords": [
+            "hardware",
+            "硬件",
+            "camera-two",
+            "智能摄像头",
+            "摄像",
+            "拍摄",
+            "记录",
+            "录像",
+            "录制",
+            "检测",
+            "探头",
             "抓拍",
             "偷拍"
         ],

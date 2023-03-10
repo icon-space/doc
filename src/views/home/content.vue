@@ -26,7 +26,7 @@
                     :data="list"
                     :bordered="false"
                     :virtual-list-props="{
-                      height: 'calc(100vh - 140px)',
+                      height: 'calc(100vh - 120px)',
                     }"
                 >
                     <template #item="{ item, index }">
