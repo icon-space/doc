@@ -4,7 +4,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
-import { visualizer } from "rollup-plugin-visualizer"
+import { visualizer } from 'rollup-plugin-visualizer'
 
 // https://vitejs.dev/config/
 
@@ -34,9 +34,9 @@ export default defineConfig(({ mode }) => {
                 gzipSize: true,
                 brotliSize: true,
                 emitFile: false,
-                filename: "visualizer.html",
+                filename: 'visualizer.html',
                 open: mode !== 'github'
-            }),
+            })
         ],
         build: {
             target: 'es2015',

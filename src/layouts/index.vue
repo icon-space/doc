@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { Translate, SunOne, Moon, GithubOne, Bug } from "@icon-space/vue-next";
+import { Translate, SunOne, Moon, GithubOne, Bug } from '@icon-space/vue-next'
 import useSiteStore, { LangType } from '../stores/site'
 
 const site = useSiteStore()

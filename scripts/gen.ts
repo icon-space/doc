@@ -2,7 +2,6 @@ import fs from 'fs'
 import icons from '@icon-space/vue-next/icons.json'
 import Category from '../src/category'
 
-
 // 生成
 function gen() {
     // 分类列表
@@ -15,12 +14,11 @@ function gen() {
         categoryList[val.category].push(val)
     })
 
-    const iconItems:any[] = []
+    const iconItems: any[] = []
 
     const allCategoryCounts: Record<string, number> = {}
 
     const categoryItems: Record<string, any> = {}
-
 
     Object.keys(Category).forEach(function (key) {
         const keywords = [key.toLowerCase(), ...Category[key].split(' & ')]
@@ -30,7 +28,7 @@ function gen() {
             name: Category[key],
             category: key,
             keywords: keywords,
-            count: categoryList[key].length,
+            count: categoryList[key].length
         }
         allCategoryCounts[key] = categoryList[key].length
         iconItems.push(item)
@@ -42,7 +40,7 @@ function gen() {
                 name: value.title,
                 category: value.category,
                 keywords: Array.from(new Set([...keywords, value.name, value.title, ...value.tag])),
-                count: 0,
+                count: 0
             })
         })
     })

@@ -1,7 +1,7 @@
 <template>
     <a-layout-sider class="layout-side-right" :width="272">
         <div class="download">
-<!--            <a-button type="primary">{{ $t('batchDownload') }}</a-button>-->
+            <!--            <a-button type="primary">{{ $t('batchDownload') }}</a-button>-->
         </div>
         <div class="option">
             <a-form :model="option" layout="vertical">
@@ -233,14 +233,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-    EndpointRound,
-    EndpointFlat,
-    EndpointSquare,
-    NodeRound,
-    NodeFlat,
-    NodeSquare,
-} from "@icon-space/vue-next";
+import { EndpointRound, EndpointFlat, EndpointSquare, NodeRound, NodeFlat, NodeSquare } from '@icon-space/vue-next'
 import ColorPicker from 'colorpicker-v3' // 注册组件
 import 'colorpicker-v3/style.css'
 import useSiteStore from '../../stores/site'
@@ -272,7 +265,6 @@ const reset = () => {
     .arco-input-size-mini {
         font-size: 12px !important;
     }
-
 }
 
 .layout-side-right {

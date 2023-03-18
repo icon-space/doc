@@ -8,3 +8,5 @@ declare module 'colorpicker-v3' {
     import ColorPicker from 'colorpicker-v3'
     export default ColorPicker
 }
+
+declare type BoothMode = 'list' | 'card'

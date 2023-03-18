@@ -68,6 +68,22 @@ const useOptionStore = defineStore({
         prefix: def.prefix
     }),
     getters: {
+        getFill: state => {
+            if (state.theme === 'outline') {
+                return state.colors.outline.fill
+            } else if (state.theme === 'filled') {
+                return state.colors.filled.fill
+            } else if (state.theme === 'two-tone') {
+                return [state.colors.twoTone.fill, state.colors.twoTone.twoTone]
+            } else if (state.theme === 'multi-color') {
+                return [
+                    state.colors.multiColor.outStrokeColor,
+                    state.colors.multiColor.outFillColor,
+                    state.colors.multiColor.innerStrokeColor,
+                    state.colors.multiColor.innerFillColor
+                ]
+            }
+        }
     },
     actions: {
         reset() {

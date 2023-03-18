@@ -3,7 +3,7 @@
         <div class="search">
             <a-space size="large" align="center">
                 <a-input-search :style="{ width: '320px' }" :placeholder="$t('searchIcon')" allow-clear @input="search" @press-enter="search" @clear="search" v-model="keyword" />
-<!--                <a-checkbox value="1">{{ $t('selectedOnly') }}：{{ 0 }} / {{ searchTotal }}</a-checkbox>-->
+                <!--                <a-checkbox value="1">{{ $t('selectedOnly') }}：{{ 0 }} / {{ searchTotal }}</a-checkbox>-->
                 <a-radio-group type="button" v-model="mode" @change="modeChange">
                     <a-radio value="list">
                         <ViewGridList :size="22" :strokeWidth="2" theme="outline" strokeLinecap="round" strokeLinejoin="round" fill="currentColor"></ViewGridList>
@@ -16,8 +16,10 @@
         </div>
         <div class="layout-icons">
             <a-layout-sider class="layout-side-left" ref="anchor">
-                <a-anchor line-less style="width: 100%" :change-hash="false" scroll-container=".arco-list-content"  @select="anchorSelect">
-                    <a-anchor-link :id="`${k}-anchor`" :href="`#${k}`" v-for="(v, k) in categoryCount" :key="k"> {{ site.lang === 'zh' ? Category[k] : k }}（{{ v }}） </a-anchor-link>
+                <a-anchor line-less style="width: 100%" :change-hash="false" scroll-container=".arco-list-content" @select="anchorSelect">
+                    <a-anchor-link :id="`${k}-anchor`" :href="`#${k}`" v-for="(v, k) in categoryCount" :key="k">
+                        {{ site.lang === 'zh' ? Category[k] : k }}（{{ v }}）
+                    </a-anchor-link>
                 </a-anchor>
             </a-layout-sider>
             <div class="icons" ref="scroll">
@@ -26,17 +28,17 @@
                     :data="list"
                     :bordered="false"
                     :virtual-list-props="{
-                      height: 'calc(100vh - 120px)',
+                        height: 'calc(100vh - 120px)'
                     }"
                 >
                     <template #item="{ item, index }">
                         <a-list-item :key="item.key">
                             <a-space fill style="margin-bottom: 8px">
                                 <template v-if="item.header">
-                                    <h2 :id="item.key">{{ site.lang === 'zh' ? item.val.name : item.val.key }}（{{categoryCount[item.val.key]}}）</h2>
+                                    <h2 :id="item.key">{{ site.lang === 'zh' ? item.val.name : item.val.key }}（{{ categoryCount[item.val.key] }}）</h2>
                                 </template>
                                 <template v-else v-for="val in item.val" :key="val.key">
-                                    <Card :name="val.key" :zh-name="val.name" :card="mode === 'card'"></Card>
+                                    <Booth :name="val.key" :zh-name="val.name" :mode="mode"></Booth>
                                 </template>
                             </a-space>
                         </a-list-item>
@@ -48,13 +50,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
-import {ViewGridList, ViewGridCard, IconProvider} from "@icon-space/vue-next";
-import Card from "../../components/Card.vue";
+import { ref } from 'vue'
+import { ViewGridList, ViewGridCard, IconProvider } from '@icon-space/vue-next'
+import Booth from '../../components/booth/index.vue'
 import Category from '../../category'
 import useSiteStore from '../../stores/site'
-import useIcons from "./useIcons";
-import useOptionStore from "../../stores/option";
+import useIcons from './useIcons'
+import useOptionStore from '../../stores/option'
 
 const site = useSiteStore()
 const option = useOptionStore()
@@ -63,7 +65,6 @@ const option = useOptionStore()
 IconProvider(option.$state)
 
 const anchor = ref<HTMLElement>()
-
 
 const {
     target,
@@ -77,7 +78,6 @@ const {
     search,
     anchorSelect
 } = useIcons()
-
 </script>
 
 <style lang="scss">

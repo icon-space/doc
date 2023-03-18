@@ -1,7 +1,6 @@
-import {onBeforeMount, ref} from "vue";
+import { onBeforeMount, ref } from 'vue'
 import allIconItems, { total, IconItem, allCategoryItems, allCategoryCounts } from '../../category_list'
-import { debounce } from "../../util";
-
+import { debounce } from '../../util'
 
 export interface IconGroup {
     // key: IconKey | IconItem[]
@@ -11,8 +10,12 @@ export interface IconGroup {
     val: IconItem | IconItem[]
 }
 
+const boothModeColumn: Record<string, number> = {
+    list: 4,
+    card: 12
+}
 
-const include = (word: string, keywords: string[]):boolean => {
+const include = (word: string, keywords: string[]): boolean => {
     for (let keyword of keywords) {
         if (word.indexOf(keyword) > -1) {
             return true
@@ -26,7 +29,7 @@ const useIcons = () => {
     // 列表
     const list = ref<IconGroup[]>([])
     // 展示模式
-    const mode = ref<'list' | 'card'>('list')
+    const mode = ref<BoothMode>('list')
     const icons = ref<IconItem[]>(allIconItems)
     // 搜索关键字
     const keyword = ref<string>('')
@@ -36,7 +39,7 @@ const useIcons = () => {
     const searchTotal = ref<number>(total)
 
     const handlerSearch = debounce(() => {
-        const searchCategoryCount:Record<string, number> = {}
+        const searchCategoryCount: Record<string, number> = {}
         const searchIcons: IconItem[] = []
         const categorySet = new Set<string>()
         const categoryGroupSet = new Set<string>()
@@ -71,7 +74,7 @@ const useIcons = () => {
                         }
                         searchIcons.push(item)
                         searchCategoryCount[item.category] += 1
-                        count ++
+                        count++
                         break
                     }
                 }
@@ -85,15 +88,13 @@ const useIcons = () => {
         iconsGroup()
     }, 3)
 
-
     // 分组
     const iconsGroup = () => {
-
-        const size = mode.value === 'list' ? 4 : 12
+        const size = boothModeColumn[mode.value]
         const items: IconGroup[] = []
 
         let index = 1
-        let group:IconItem[] = []
+        let group: IconItem[] = []
 
         icons.value.forEach(value => {
             if (value.kind === 'header') {
@@ -128,7 +129,7 @@ const useIcons = () => {
                 })
                 group = []
             }
-            index ++
+            index++
         })
 
         if (group.length) {
@@ -140,11 +141,10 @@ const useIcons = () => {
         }
 
         list.value = items
-
     }
 
     // 展示模式切换时
-    const modeChange = (value: string | number | boolean) => {
+    const modeChange = () => {
         iconsGroup()
     }
 
@@ -161,7 +161,7 @@ const useIcons = () => {
     }
 
     // 锚点被选择时
-    const anchorSelect = (hash: string | undefined, preHash: string) => {
+    const anchorSelect = (hash: string | undefined) => {
         if (!hash) {
             return
         }
@@ -174,7 +174,6 @@ const useIcons = () => {
     onBeforeMount(() => {
         iconsGroup()
     })
-
 
     return {
         target,
