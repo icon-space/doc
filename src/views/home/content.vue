@@ -14,9 +14,9 @@
                 </a-radio-group>
                 <a-select :placeholder="$t('nomenclature')" :style="{ width: '130px' }" v-model="site.named">
                     <a-option value="KebabCase">{{ $t('kebabcase') }}</a-option>
+                    <a-option value="SnakeCase">{{ $t('snakecase') }}</a-option>
                     <a-option value="PascalCase">{{ $t('pascalcase') }}</a-option>
                     <a-option value="CamelCase">{{ $t('camelcase') }}</a-option>
-                    <a-option value="SnakeCase">{{ $t('snakecase') }}</a-option>
                     <a-option value="Chinese">{{ $t('chinese') }}</a-option>
                 </a-select>
             </a-space>
