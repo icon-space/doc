@@ -46,7 +46,7 @@ const props = defineProps({
 
 const site = useSiteStore()
 
-const { actions, action } = useBooth(props.name)
+const { actions, action } = useBooth(props.name, props.zhName)
 
 const click = (e: Event) => {
     e.stopPropagation()

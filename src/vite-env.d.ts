@@ -10,3 +10,6 @@ declare module 'colorpicker-v3' {
 }
 
 declare type BoothMode = 'list' | 'card'
+
+// 大驼峰 | 小驼峰 | 下划线 | 中划线 | 中文
+declare type NamedType = 'PascalCase' | 'CamelCase' | 'SnakeCase' | 'KebabCase' | 'Chinese'

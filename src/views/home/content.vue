@@ -3,7 +3,7 @@
         <div class="search">
             <a-space size="large" align="center">
                 <a-input-search :style="{ width: '320px' }" :placeholder="$t('searchIcon')" allow-clear @input="search" @press-enter="search" @clear="search" v-model="keyword" />
-                <!--                <a-checkbox value="1">{{ $t('selectedOnly') }}：{{ 0 }} / {{ searchTotal }}</a-checkbox>-->
+                <a-checkbox value="1" v-model="selectedOnly">{{ $t('selectedOnly') }}：{{ Object.keys(icon.icons).length }} / {{ searchTotal }}</a-checkbox>
                 <a-radio-group type="button" v-model="mode" @change="modeChange">
                     <a-radio value="list">
                         <ViewGridList :size="22" :strokeWidth="2" theme="outline" strokeLinecap="round" strokeLinejoin="round" fill="currentColor"></ViewGridList>
@@ -12,6 +12,13 @@
                         <ViewGridCard :size="22" :strokeWidth="2" theme="outline" strokeLinecap="round" strokeLinejoin="round" fill="currentColor"></ViewGridCard>
                     </a-radio>
                 </a-radio-group>
+                <a-select :placeholder="$t('nomenclature')" :style="{ width: '130px' }" v-model="site.named">
+                    <a-option value="KebabCase">{{ $t('kebabcase') }}</a-option>
+                    <a-option value="PascalCase">{{ $t('pascalcase') }}</a-option>
+                    <a-option value="CamelCase">{{ $t('camelcase') }}</a-option>
+                    <a-option value="SnakeCase">{{ $t('snakecase') }}</a-option>
+                    <a-option value="Chinese">{{ $t('chinese') }}</a-option>
+                </a-select>
             </a-space>
         </div>
         <div class="layout-icons">
@@ -55,11 +62,13 @@ import { ViewGridList, ViewGridCard, IconProvider } from '@icon-space/vue-next'
 import Booth from '../../components/booth/index.vue'
 import Category from '../../category'
 import useSiteStore from '../../stores/site'
-import useIcons from './useIcons'
 import useOptionStore from '../../stores/option'
+import useIconStore from '../../stores/icon'
+import useIcons from './useIcons'
 
 const site = useSiteStore()
 const option = useOptionStore()
+const icon = useIconStore()
 
 // 设置图标属性
 IconProvider(option.$state)
@@ -73,6 +82,7 @@ const {
     categoryCount,
     keyword,
     searchTotal,
+    selectedOnly,
 
     modeChange,
     search,

@@ -1,7 +1,7 @@
 <template>
     <a-layout-sider class="layout-side-right" :width="272">
         <div class="download">
-            <!--            <a-button type="primary">{{ $t('batchDownload') }}</a-button>-->
+            <a-button type="primary" :disabled="Object.keys(icon.icons).length === 0" @click="batchDownloadSvgs">{{ $t('batchDownload') }}</a-button>
         </div>
         <div class="option">
             <a-form :model="option" layout="vertical">
@@ -238,14 +238,19 @@ import ColorPicker from 'colorpicker-v3' // 注册组件
 import 'colorpicker-v3/style.css'
 import useSiteStore from '../../stores/site'
 import useOptionStore from '../../stores/option'
+import useIconStore from '../../stores/icon'
+import useBooth from '../../components/booth/useBooth'
 
 const site = useSiteStore()
 const option = useOptionStore()
+const icon = useIconStore()
 
 // 重置
 const reset = () => {
     option.reset()
 }
+
+const { batchDownloadSvgs } = useBooth()
 </script>
 
 <style lang="scss">

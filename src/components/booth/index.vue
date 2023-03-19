@@ -1,5 +1,5 @@
 <template>
-    <div class="booth" :class="{ 'booth-checked': checked }" @click="click">
+    <div class="booth" :class="{ 'booth-checked': name in icon.icons }" @click="click">
         <component :is="components[mode]" :name="name" :zhName="zhName" />
     </div>
 </template>
@@ -8,8 +8,11 @@
 import { ref } from 'vue'
 import ListGrid from './list.vue'
 import CardGrid from './card.vue'
+import useIconStore from '../../stores/icon'
 
-const components:Record<string, any> = {
+const icon = useIconStore()
+
+const components: Record<string, any> = {
     list: ListGrid,
     card: CardGrid
 }
@@ -35,6 +38,11 @@ const checked = ref(false)
 
 const click = () => {
     checked.value = !checked.value
+    if (checked.value) {
+        icon.add(props.name, props.zhName)
+        return
+    }
+    icon.remove(props.name)
 }
 </script>
 

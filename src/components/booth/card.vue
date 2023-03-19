@@ -27,7 +27,7 @@ const props = defineProps({
     }
 })
 
-const { actions, action } = useBooth(props.name)
+const { actions, action } = useBooth(props.name, props.zhName)
 </script>
 
 <style scoped lang="scss">

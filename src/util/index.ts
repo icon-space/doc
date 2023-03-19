@@ -26,10 +26,33 @@ export const getSvgDom = (name: string): string | undefined => {
     return document.querySelector(`#i-${name}`)?.firstElementChild?.innerHTML
 }
 
-// 转大驼峰
-export const toCamelCase = (name: string): string => {
+// 帕斯卡命名法
+export const toPascalCase = (name: string): string => {
     return name
         .split('-')
         .map(item => item[0] && item[0].toUpperCase() + item.substring(1))
         .join('')
+}
+
+// 小驼峰命名
+export const toCamelCase = (name: string): string => {
+    return name
+        .split('-')
+        .map((item, index) => {
+            if (index === 0) {
+                return item[0] && item[0].toLowerCase() + item.substring(1)
+            }
+            return item[0] && item[0].toUpperCase() + item.substring(1)
+        })
+        .join('')
+}
+
+// 下划线命名法
+export const toSnakeCase = (name: string): string => {
+    return name.replaceAll('-', '_')
+}
+
+// 中划线命名法
+export const toKebabCase = (name: string): string => {
+    return name
 }

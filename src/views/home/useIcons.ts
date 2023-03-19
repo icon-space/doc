@@ -1,6 +1,7 @@
-import { onBeforeMount, ref } from 'vue'
+import { onBeforeMount, ref, watch } from 'vue'
 import allIconItems, { total, IconItem, allCategoryItems, allCategoryCounts } from '../../category_list'
 import { debounce } from '../../util'
+import useIconStore from '../../stores/icon'
 
 export interface IconGroup {
     // key: IconKey | IconItem[]
@@ -15,16 +16,9 @@ const boothModeColumn: Record<string, number> = {
     card: 12
 }
 
-const include = (word: string, keywords: string[]): boolean => {
-    for (let keyword of keywords) {
-        if (word.indexOf(keyword) > -1) {
-            return true
-        }
-    }
-    return false
-}
-
 const useIcons = () => {
+    const icon = useIconStore()
+
     const target = ref<any>()
     // 列表
     const list = ref<IconGroup[]>([])
@@ -37,6 +31,18 @@ const useIcons = () => {
     const categoryCount = ref<Record<string, number>>(allCategoryCounts)
     // 搜索到的总数
     const searchTotal = ref<number>(total)
+    // 是否只看选中的
+    const selectedOnly = ref<boolean>(false)
+
+    const include = (word: string, keywords: string[]): boolean => {
+        for (let keyword of keywords) {
+            if (word.indexOf(keyword) > -1) {
+                return true
+            }
+        }
+        return selectedOnly.value && keywords.length === 0;
+
+    }
 
     const handlerSearch = debounce(() => {
         const searchCategoryCount: Record<string, number> = {}
@@ -44,15 +50,25 @@ const useIcons = () => {
         const categorySet = new Set<string>()
         const categoryGroupSet = new Set<string>()
         let count = 0
+        keyword.value = keyword.value.trim()
+        let keywords = keyword.value.toLowerCase().split(/[\s]+/)
 
-        const keywords = keyword.value.toLowerCase().split(/[\s]+/)
+        if (selectedOnly.value) {
+            keywords = keyword.value.length === 0 ? [] : keywords
+        } else if (keyword.value === '') {
+            icons.value = allIconItems
+            searchTotal.value = total
+            categoryCount.value = allCategoryCounts
+            iconsGroup()
+            return
+        }
 
         for (let item of allIconItems) {
             if (categoryGroupSet.has(item.category)) {
                 searchIcons.push(item)
                 continue
             }
-            if (item.kind === 'header') {
+            if (item.kind === 'header' && !selectedOnly.value) {
                 for (let k of item.keywords) {
                     if (include(k, keywords)) {
                         searchIcons.push(item)
@@ -63,6 +79,11 @@ const useIcons = () => {
                     }
                 }
                 continue
+            }
+            if (selectedOnly.value) {
+                if (!(item.key in icon.icons)) {
+                    continue
+                }
             }
             if (item.kind === 'icon') {
                 for (let k of item.keywords) {
@@ -148,15 +169,12 @@ const useIcons = () => {
         iconsGroup()
     }
 
+    watch([selectedOnly], () => {
+        handlerSearch()
+    })
+
     // 搜素
     const search = () => {
-        if (keyword.value.trim().length === 0) {
-            icons.value = allIconItems
-            searchTotal.value = total
-            categoryCount.value = allCategoryCounts
-            iconsGroup()
-            return
-        }
         handlerSearch()
     }
 
@@ -182,6 +200,7 @@ const useIcons = () => {
         categoryCount,
         keyword,
         searchTotal,
+        selectedOnly,
 
         modeChange,
         search,

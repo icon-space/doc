@@ -23,5 +23,11 @@ export default {
     copySvg: 'Copy SVG',
     copyReactCode: 'Copy React Code',
     copyVueCode: 'Copy Vue Code',
-    downloadSvg: 'Download SVG'
+    downloadSvg: 'Download SVG',
+    nomenclature: 'Nomenclature',
+    kebabcase: 'KebabCase',
+    pascalcase: 'PascalCase',
+    camelcase: 'CamelCase',
+    snakecase: 'SnakeCase',
+    chinese: 'Chinese'
 }

@@ -23,5 +23,11 @@ export default {
     copySvg: '复制SVG',
     copyReactCode: '复制React代码',
     copyVueCode: '复制Vue代码',
-    downloadSvg: '下载SVG'
+    downloadSvg: '下载SVG',
+    nomenclature: '复制或下载时命名方式',
+    kebabcase: '中划线命名',
+    pascalcase: '大驼峰命名',
+    camelcase: '小驼峰命名',
+    snakecase: '下划线命名',
+    chinese: '中文命名'
 }
