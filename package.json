@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.44.1",
-    "@icon-space/vue-next": "1.0.2",
+    "@icon-space/vue-next": "1.0.3-beta.0",
     "@vue/server-renderer": "^3.2.47",
     "colorpicker-v3": "^2.10.2",
     "jszip": "^3.10.1",

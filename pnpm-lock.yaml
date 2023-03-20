@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@arco-design/web-vue': ^2.44.1
-  '@icon-space/vue-next': 1.0.2
+  '@icon-space/vue-next': 1.0.3-beta.0
   '@types/node': ^18.15.3
   '@vitejs/plugin-vue': ^4.1.0
   '@vue/server-renderer': ^3.2.47
@@ -30,7 +30,7 @@ specifiers:
 
 dependencies:
   '@arco-design/web-vue': 2.44.1_vue@3.2.47
-  '@icon-space/vue-next': 1.0.2_vue@3.2.47
+  '@icon-space/vue-next': 1.0.3-beta.0_vue@3.2.47
   '@vue/server-renderer': 3.2.47_vue@3.2.47
   colorpicker-v3: 2.10.2
   jszip: 3.10.1
@@ -328,8 +328,8 @@ packages:
     dev: true
     optional: true
 
-  /@icon-space/vue-next/1.0.2_vue@3.2.47:
-    resolution: {integrity: sha512-EAWB+qsiBO4kIhN+J/X5pug7gwyXWiH/Kpjk7SR5QXS0iOWC1Snqp/QafrR1N9akg2mfCQ2AZugZeQLD2syazQ==}
+  /@icon-space/vue-next/1.0.3-beta.0_vue@3.2.47:
+    resolution: {integrity: sha512-KuHN5FWwqeGzCLomhge3drtwnG8iPf3RrD8jvEFnM2tHb2u9wJYYZ58mHhBn2nLPdf0am7yfWhGhAuQ5AmLAjw==}
     engines: {node: '>= 8.0.0', npm: '>= 5.0.0'}
     peerDependencies:
       vue: ^3.2.47
