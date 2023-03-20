@@ -3,9 +3,10 @@
         <a-layout-header class="layout-header">
             <a-row align="center" class="header">
                 <a-col :span="12" class="left">
-                    <a-badge :text="pkg.version" :offset="[20, 0]">
+                    <a-space>
                         IconSpace
-                    </a-badge>
+                        <a-tag bordered color="green">{{ pkg.version }}</a-tag>
+                    </a-space>
                 </a-col>
                 <a-col :span="12" class="right">
                     <a-space size="medium">

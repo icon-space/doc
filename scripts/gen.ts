@@ -66,6 +66,7 @@ export default allIconItems`
 
     const categoryListPath = './src/category_list.ts'
     fs.writeFileSync(categoryListPath, tmpl, 'utf8')
+    console.log('finish')
 }
 
 gen()
