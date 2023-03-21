@@ -75,6 +75,7 @@ const useIcons = () => {
                         categoryGroupSet.add(item.category)
                         categorySet.add(item.category)
                         searchCategoryCount[item.category] = item.count
+                        count += item.count
                         break
                     }
                 }
