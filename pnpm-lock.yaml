@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@arco-design/web-vue': ^2.44.2
-  '@icon-space/vue-next': 1.0.3-beta.0
+  '@icon-space/vue-next': 1.0.3
   '@types/node': ^18.15.5
   '@vitejs/plugin-vue': ^4.1.0
   '@vue/server-renderer': ^3.2.47
@@ -17,7 +17,7 @@ specifiers:
   rollup-plugin-visualizer: ^5.9.0
   sass: ^1.59.3
   typescript: ^4.9.5
-  unplugin-auto-import: ^0.15.1
+  unplugin-auto-import: ^0.15.2
   unplugin-vue-components: ^0.24.1
   vite: ^4.2.1
   vite-plugin-chunk-split: ^0.4.7
@@ -30,7 +30,7 @@ specifiers:
 
 dependencies:
   '@arco-design/web-vue': 2.44.2_vue@3.2.47
-  '@icon-space/vue-next': 1.0.3-beta.0_vue@3.2.47
+  '@icon-space/vue-next': 1.0.3_vue@3.2.47
   '@vue/server-renderer': 3.2.47_vue@3.2.47
   colorpicker-v3: 2.10.2
   jszip: 3.10.1
@@ -52,7 +52,7 @@ devDependencies:
   rollup-plugin-visualizer: 5.9.0
   sass: 1.59.3
   typescript: 4.9.5
-  unplugin-auto-import: 0.15.1
+  unplugin-auto-import: 0.15.2
   unplugin-vue-components: 0.24.1_vue@3.2.47
   vite: 4.2.1_y7rghahg7ddu72pko63vhsxa44
   vite-plugin-chunk-split: 0.4.7_vite@4.2.1
@@ -328,8 +328,8 @@ packages:
     dev: true
     optional: true
 
-  /@icon-space/vue-next/1.0.3-beta.0_vue@3.2.47:
-    resolution: {integrity: sha512-KuHN5FWwqeGzCLomhge3drtwnG8iPf3RrD8jvEFnM2tHb2u9wJYYZ58mHhBn2nLPdf0am7yfWhGhAuQ5AmLAjw==}
+  /@icon-space/vue-next/1.0.3_vue@3.2.47:
+    resolution: {integrity: sha512-107QOMjtvpEKP5A93+rGB1bNjD1sd1lwB/g+Xo06Uy917S0vOMaEXNg9szisNJ8uUQqBlKXVf+ajNCCEdmhqNA==}
     engines: {node: '>= 8.0.0', npm: '>= 5.0.0'}
     peerDependencies:
       vue: ^3.2.47
@@ -663,7 +663,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001469
-      electron-to-chromium: 1.4.334
+      electron-to-chromium: 1.4.337
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -791,8 +791,8 @@ packages:
     resolution: {integrity: sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==}
     dev: false
 
-  /electron-to-chromium/1.4.334:
-    resolution: {integrity: sha512-laZ1odk+TRen6q0GeyQx/JEkpD3iSZT7ewopCpKqg9bTjP1l8XRfU3Bg20CFjNPZkp5+NDBl3iqd4o/kPO+Vew==}
+  /electron-to-chromium/1.4.337:
+    resolution: {integrity: sha512-W8gdzXG86mVPoc56eM8YA+QiLxaAxJ8cmDjxZgfhLLWVvZQxyA918w5tX2JEWApZta45T1/sYcmFHTsTOUE3nw==}
     dev: true
 
   /emoji-regex/8.0.0:
@@ -1058,8 +1058,8 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
-  /minimatch/7.4.2:
-    resolution: {integrity: sha512-xy4q7wou3vUoC9k1xGTXc+awNdGaGVHtFUaey8tiX4H1QRc04DZ/rmDFwNm2EBsuYEhAZ6SgMmYf3InGY6OauA==}
+  /minimatch/7.4.3:
+    resolution: {integrity: sha512-5UB4yYusDtkRPbRiy1cqZ1IpGNcJCGlEMG17RKzPddpyiPKoCdwohbED8g4QXT0ewCt8LTkQXuljsUfQ3FKM4A==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
@@ -1252,8 +1252,8 @@ packages:
       yargs: 17.7.1
     dev: true
 
-  /rollup/3.20.0:
-    resolution: {integrity: sha512-YsIfrk80NqUDrxrjWPXUa7PWvAfegZEXHuPsEZg58fGCdjL1I9C1i/NaG+L+27kxxwkrG/QEDEQc8s/ynXWWGQ==}
+  /rollup/3.20.1:
+    resolution: {integrity: sha512-sz2w8cBJlWQ2E17RcpvHuf4sk2BQx4tfKDnjNPikEpLEevrbIAR7CH3PGa2hpPwWbNgPaA9yh9Jzljds5bc9zg==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -1414,8 +1414,8 @@ packages:
       - rollup
     dev: true
 
-  /unplugin-auto-import/0.15.1:
-    resolution: {integrity: sha512-xLS+BfVNy00Y3IkqBmEd0IThvjx8kSGIgSuf/1kETttiENK8sHrDA+poKkQxRCPTKYH4yWM6txGQANPTzwpUWQ==}
+  /unplugin-auto-import/0.15.2:
+    resolution: {integrity: sha512-Wivfu+xccgvEZG8QtZcIvt6napfX9wyOFqM//7FHOtev8+k+dp3ykiqsEl6TODgHmqTTBeQX4Ah1JvRgUNjlkg==}
     engines: {node: '>=14'}
     peerDependencies:
       '@nuxt/kit': ^3.2.2
@@ -1430,7 +1430,7 @@ packages:
       '@rollup/pluginutils': 5.0.2
       local-pkg: 0.4.3
       magic-string: 0.30.0
-      minimatch: 7.4.2
+      minimatch: 7.4.3
       unimport: 3.0.3
       unplugin: 1.3.1
     transitivePeerDependencies:
@@ -1457,7 +1457,7 @@ packages:
       fast-glob: 3.2.12
       local-pkg: 0.4.3
       magic-string: 0.30.0
-      minimatch: 7.4.2
+      minimatch: 7.4.3
       resolve: 1.22.1
       unplugin: 1.3.1
       vue: 3.2.47
@@ -1529,7 +1529,7 @@ packages:
       esbuild: 0.17.12
       postcss: 8.4.21
       resolve: 1.22.1
-      rollup: 3.20.0
+      rollup: 3.20.1
       sass: 1.59.3
     optionalDependencies:
       fsevents: 2.3.2
