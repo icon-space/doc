@@ -10,6 +10,7 @@ export interface SiteOption {
     // 语言
     lang: LangType
     named: NamedType
+    iconPrefix: string
 }
 
 // 网页设置
@@ -18,7 +19,8 @@ const useSiteStore = defineStore({
     state: (): SiteOption => ({
         theme: 'light',
         lang: 'en',
-        named: 'KebabCase'
+        named: 'KebabCase',
+        iconPrefix: ''
     }),
     getters: {},
     actions: {

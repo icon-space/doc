@@ -29,5 +29,6 @@ export default {
     pascalcase: '大驼峰命名',
     camelcase: '小驼峰命名',
     snakecase: '下划线命名',
-    chinese: '中文命名'
+    chinese: '中文命名',
+    iconPrefix: '图标前缀'
 }

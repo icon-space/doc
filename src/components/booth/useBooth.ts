@@ -27,18 +27,21 @@ const useBooth = (name: string = '', zhName: string = '') => {
     }
 
     const getName = (iconName: string, iconZhName: string): string => {
+        if (site.iconPrefix.trim().length) {
+            iconName = site.iconPrefix.trim() + '-' + iconName
+        }
         let value = iconName
         switch (site.named) {
             case 'KebabCase':
                 break
             case 'PascalCase':
-                value = toPascalCase(iconName)
+                value = toPascalCase(value)
                 break
             case 'CamelCase':
-                value = toCamelCase(iconName)
+                value = toCamelCase(value)
                 break
             case 'SnakeCase':
-                value = toSnakeCase(iconName)
+                value = toSnakeCase(value)
                 break
             case 'Chinese':
                 value = iconZhName

@@ -29,5 +29,6 @@ export default {
     pascalcase: 'PascalCase',
     camelcase: 'CamelCase',
     snakecase: 'SnakeCase',
-    chinese: 'Chinese'
+    chinese: 'Chinese',
+    iconPrefix: 'Icon Prefix'
 }
