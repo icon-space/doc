@@ -1,4 +1,4 @@
-export const total = 2682
+export const total = 2685
 
 export interface IconItem {
     kind: 'header' | 'icon'
@@ -21,7 +21,7 @@ export const allCategoryCounts: Record<string, number> = {
     "Animals": 36,
     "Music": 57,
     "Clothes": 72,
-    "Character": 33,
+    "Character": 35,
     "Industry": 26,
     "Makeups": 46,
     "Graphics": 19,
@@ -46,7 +46,7 @@ export const allCategoryCounts: Record<string, number> = {
     "Constellation": 12,
     "Health": 70,
     "Hardware": 223,
-    "Peoples": 50,
+    "Peoples": 51,
     "Game": 36,
     "Others": 67
 }
@@ -184,7 +184,7 @@ export const allCategoryItems: Record<string, IconItem> = {
             "character",
             "符号标识"
         ],
-        "count": 33
+        "count": 35
     },
     "Industry": {
         "kind": "header",
@@ -460,7 +460,7 @@ export const allCategoryItems: Record<string, IconItem> = {
             "peoples",
             "用户人名"
         ],
-        "count": 50
+        "count": 51
     },
     "Game": {
         "kind": "header",
@@ -17817,7 +17817,7 @@ const allIconItems: IconItem[] = [
             "character",
             "符号标识"
         ],
-        "count": 33
+        "count": 35
     },
     {
         "kind": "icon",
@@ -18351,6 +18351,42 @@ const allIconItems: IconItem[] = [
             "VIP",
             "加V",
             "会员"
+        ],
+        "count": 0
+    },
+    {
+        "kind": "icon",
+        "key": "check-two",
+        "name": "校验",
+        "category": "Character",
+        "keywords": [
+            "character",
+            "符号标识",
+            "check-two",
+            "校验",
+            "勾选",
+            "对勾",
+            "正确",
+            "成功",
+            "完成",
+            "选中"
+        ],
+        "count": 0
+    },
+    {
+        "kind": "icon",
+        "key": "close-two",
+        "name": "关闭",
+        "category": "Character",
+        "keywords": [
+            "character",
+            "符号标识",
+            "close-two",
+            "关闭",
+            "删除",
+            "清除",
+            "错误",
+            "取消"
         ],
         "count": 0
     },
@@ -41891,7 +41927,7 @@ const allIconItems: IconItem[] = [
             "peoples",
             "用户人名"
         ],
-        "count": 50
+        "count": 51
     },
     {
         "kind": "icon",
@@ -42665,6 +42701,29 @@ const allIconItems: IconItem[] = [
             "关闭",
             "关闭用户权限",
             "删除用户"
+        ],
+        "count": 0
+    },
+    {
+        "kind": "icon",
+        "key": "programmer",
+        "name": "程序员",
+        "category": "Peoples",
+        "keywords": [
+            "peoples",
+            "用户人名",
+            "programmer",
+            "程序员",
+            "人",
+            "工程师",
+            "开发",
+            "技术",
+            "计算机",
+            "编程",
+            "运维",
+            "前端",
+            "后端",
+            "全栈"
         ],
         "count": 0
     },
