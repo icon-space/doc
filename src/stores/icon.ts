@@ -17,6 +17,9 @@ const useIconStore = defineStore({
         },
         remove(name: string) {
             delete this.icons[name]
+        },
+        clear() {
+            this.icons = {}
         }
     },
     // 启用持久化

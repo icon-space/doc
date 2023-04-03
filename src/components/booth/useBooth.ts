@@ -72,7 +72,7 @@ const useBooth = (name: string = '', zhName: string = '') => {
     }
 
     const copyName = async () => {
-        let value = getName(name, zhName)
+        const value = getName(name, zhName)
 
         await toClipboard(value)
         success(value)
@@ -85,28 +85,29 @@ const useBooth = (name: string = '', zhName: string = '') => {
     }
 
     const copyReactCode = async () => {
-        let camelCaseName = toPascalCase(name)
+        const value = getName(name, zhName)
         let fill = option.getFill
         fill = typeof fill === 'string' ? fill : `{${JSON.stringify(fill).replaceAll('"', "'")}}`
-        const reactCode = `<${camelCaseName} theme="${option.theme}" size="${option.size}" strokeWidth="{${option.strokeWidth}}" strokeLinecap="${option.strokeLinecap}" strokeLinejoin="${option.strokeLinejoin}" fill="${fill}"/>`
+        const reactCode = `<${value} theme="${option.theme}" size="${option.size}" strokeWidth="{${option.strokeWidth}}" strokeLinecap="${option.strokeLinecap}" strokeLinejoin="${option.strokeLinejoin}" fill="${fill}"/>`
         await toClipboard(reactCode)
         success(reactCode)
     }
 
     const copyVueCode = async () => {
+        const value = getName(name, zhName)
         let fill = option.getFill
         if (typeof fill === 'string') {
             fill = `fill="${fill}"`
         } else {
             fill = `:fill="${JSON.stringify(fill).replaceAll('"', "'")}"`
         }
-        const vueCode = `<${name} theme="${option.theme}" :size="${option.size}" :strokeWidth="${option.strokeWidth}" strokeLinecap="${option.strokeLinecap}" strokeLinejoin="${option.strokeLinejoin}" ${fill}/>`
+        const vueCode = `<${value} theme="${option.theme}" :size="${option.size}" :strokeWidth="${option.strokeWidth}" strokeLinecap="${option.strokeLinecap}" strokeLinejoin="${option.strokeLinejoin}" ${fill}/>`
         await toClipboard(vueCode)
         success(vueCode)
     }
 
     const downloadSvg = async () => {
-        let value = getName(name, zhName)
+        const value = getName(name, zhName)
         const svg = await getSvg(name)
         const file = new File([svg], `${value}.svg`, {
             type: 'image/svg'
