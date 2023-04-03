@@ -6,6 +6,7 @@ type Iconfig = IIconConfig & {
 }
 
 const def: Iconfig = {
+    tag: 'span',
     size: 24,
     strokeWidth: 4,
     theme: 'outline',
@@ -39,6 +40,7 @@ const def: Iconfig = {
 const useOptionStore = defineStore({
     id: 'option',
     state: (): Iconfig => ({
+        tag: def.tag,
         size: def.size,
         strokeWidth: def.strokeWidth,
         theme: def.theme,

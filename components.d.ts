@@ -11,7 +11,6 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AAnchor: typeof import('@arco-design/web-vue')['Anchor']
     AAnchorLink: typeof import('@arco-design/web-vue')['AnchorLink']
-    ABadge: typeof import('@arco-design/web-vue')['Badge']
     AButton: typeof import('@arco-design/web-vue')['Button']
     ACheckbox: typeof import('@arco-design/web-vue')['Checkbox']
     ACol: typeof import('@arco-design/web-vue')['Col']
