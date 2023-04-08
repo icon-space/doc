@@ -23,6 +23,7 @@ export default {
     copySvg: 'Copy SVG',
     copyReactCode: 'Copy React Code',
     copyVueCode: 'Copy Vue Code',
+    copyBase64: 'Copy Base64',
     downloadSvg: 'Download SVG',
     nomenclature: 'Nomenclature',
     kebabcase: 'KebabCase',

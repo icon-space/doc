@@ -106,6 +106,13 @@ const useBooth = (name: string = '', zhName: string = '') => {
         success(vueCode)
     }
 
+    const copyBase64 = async () => {
+        const svg = await getSvg(name)
+        const buf = `data:image/svg+xml;base64,${window.btoa(svg)}`
+        await toClipboard(buf)
+        success(name)
+    }
+
     const downloadSvg = async () => {
         const value = getName(name, zhName)
         const svg = await getSvg(name)
@@ -137,6 +144,7 @@ const useBooth = (name: string = '', zhName: string = '') => {
         copySvg,
         copyReactCode,
         copyVueCode,
+        copyBase64,
         downloadSvg
     }
 

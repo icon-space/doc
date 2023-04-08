@@ -23,6 +23,7 @@ export default {
     copySvg: '复制SVG',
     copyReactCode: '复制React代码',
     copyVueCode: '复制Vue代码',
+    copyBase64: '复制Base64',
     downloadSvg: '下载SVG',
     nomenclature: '复制或下载时命名方式',
     kebabcase: '中划线命名',
