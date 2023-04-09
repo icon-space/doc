@@ -17,7 +17,7 @@ export const allCategoryCounts: Record<string, number> = {
     "Emoji": 37,
     "Measurement": 13,
     "Abstract": 121,
-    "Money": 84,
+    "Money": 83,
     "Animals": 36,
     "Music": 57,
     "Clothes": 72,
@@ -44,7 +44,7 @@ export const allCategoryCounts: Record<string, number> = {
     "Sports": 84,
     "Weather": 16,
     "Constellation": 12,
-    "Health": 70,
+    "Health": 71,
     "Hardware": 223,
     "Peoples": 51,
     "Game": 36,
@@ -140,7 +140,7 @@ export const allCategoryItems: Record<string, IconItem> = {
             "money",
             "电商财产"
         ],
-        "count": 84
+        "count": 83
     },
     "Animals": {
         "kind": "header",
@@ -438,7 +438,7 @@ export const allCategoryItems: Record<string, IconItem> = {
             "health",
             "医疗健康"
         ],
-        "count": 70
+        "count": 71
     },
     "Hardware": {
         "kind": "header",
@@ -13841,7 +13841,7 @@ const allIconItems: IconItem[] = [
             "money",
             "电商财产"
         ],
-        "count": 84
+        "count": 83
     },
     {
         "kind": "icon",
@@ -14506,21 +14506,6 @@ const allIconItems: IconItem[] = [
             "购物袋",
             "袋子",
             "逛街"
-        ],
-        "count": 0
-    },
-    {
-        "kind": "icon",
-        "key": "medication-time",
-        "name": "准时吃药",
-        "category": "Money",
-        "keywords": [
-            "money",
-            "电商财产",
-            "medication-time",
-            "准时吃药",
-            "按时",
-            "准时"
         ],
         "count": 0
     },
@@ -36936,7 +36921,7 @@ const allIconItems: IconItem[] = [
             "health",
             "医疗健康"
         ],
-        "count": 70
+        "count": 71
     },
     {
         "kind": "icon",
@@ -37469,6 +37454,21 @@ const allIconItems: IconItem[] = [
             "医疗健康",
             "medical-mark",
             "医学标志"
+        ],
+        "count": 0
+    },
+    {
+        "kind": "icon",
+        "key": "medication-time",
+        "name": "准时吃药",
+        "category": "Health",
+        "keywords": [
+            "health",
+            "医疗健康",
+            "medication-time",
+            "准时吃药",
+            "按时",
+            "准时"
         ],
         "count": 0
     },
