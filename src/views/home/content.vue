@@ -19,7 +19,7 @@
                     <a-option value="CamelCase">{{ $t('camelcase') }}</a-option>
                     <a-option value="Chinese">{{ $t('chinese') }}</a-option>
                 </a-select>
-                <a-select :style="{width:'120px'}" :placeholder="$t('iconPrefix')" allow-clear allow-create v-model="site.iconPrefix">
+                <a-select :style="{ width: '120px' }" :placeholder="$t('iconPrefix')" allow-clear allow-create v-model="site.iconPrefix">
                     <a-option value="icon">icon</a-option>
                     <a-option value="svg">svg</a-option>
                 </a-select>

@@ -14,7 +14,7 @@
             <a-dropdown @select="action" @click="click">
                 <a-button shape="circle" type="text" size="mini">
                     <template #icon>
-                        <IconSpace type="more" v-bind="DEFAULT_ICON_CONFIGS" size="14" fill="currentColor"></IconSpace>
+                        <IconSpace type="more" size="14" fill="currentColor"></IconSpace>
                     </template>
                 </a-button>
                 <template #content>
@@ -26,7 +26,6 @@
 </template>
 
 <script setup lang="ts">
-import { DEFAULT_ICON_CONFIGS } from '@icon-space/vue-next'
 import { IconSpace } from '@icon-space/vue-next/es/all'
 import useSiteStore from '../../stores/site'
 import useBooth from './useBooth'

@@ -1,4 +1,4 @@
-export const total = 2685
+export const total = 2686
 
 export interface IconItem {
     kind: 'header' | 'icon'
@@ -34,7 +34,7 @@ export const allCategoryCounts: Record<string, number> = {
     "Operate": 31,
     "Baby": 47,
     "Energy": 32,
-    "Brand": 89,
+    "Brand": 90,
     "Life": 25,
     "Time": 17,
     "Foods": 121,
@@ -328,7 +328,7 @@ export const allCategoryItems: Record<string, IconItem> = {
             "brand",
             "品牌"
         ],
-        "count": 89
+        "count": 90
     },
     "Life": {
         "kind": "header",
@@ -28091,7 +28091,7 @@ const allIconItems: IconItem[] = [
             "brand",
             "品牌"
         ],
-        "count": 89
+        "count": 90
     },
     {
         "kind": "icon",
@@ -29644,6 +29644,23 @@ const allIconItems: IconItem[] = [
             "im",
             "group",
             "talk"
+        ],
+        "count": 0
+    },
+    {
+        "kind": "icon",
+        "key": "linux",
+        "name": "Linux",
+        "category": "Brand",
+        "keywords": [
+            "brand",
+            "品牌",
+            "linux",
+            "Linux",
+            "操作系统",
+            "os",
+            "pc",
+            "电脑"
         ],
         "count": 0
     },

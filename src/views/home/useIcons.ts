@@ -2,6 +2,7 @@ import { onBeforeMount, ref, watch } from 'vue'
 import allIconItems, { total, IconItem, allCategoryItems, allCategoryCounts } from '../../category_list'
 import { debounce } from '../../util'
 import useIconStore from '../../stores/icon'
+import { useRoute } from "vue-router";
 
 export interface IconGroup {
     // key: IconKey | IconItem[]
@@ -17,6 +18,9 @@ const boothModeColumn: Record<string, number> = {
 }
 
 const useIcons = () => {
+
+    const route = useRoute()
+
     const icon = useIconStore()
 
     const target = ref<any>()
@@ -34,14 +38,16 @@ const useIcons = () => {
     // 是否只看选中的
     const selectedOnly = ref<boolean>(false)
 
-    const include = (word: string, keywords: string[]): boolean => {
+    const include = (word: string, keywords: string[], equal: boolean = false): boolean => {
         for (let keyword of keywords) {
-            if (word.indexOf(keyword) > -1) {
+            if  (!equal && word.indexOf(keyword) > -1) {
+                return true
+            }
+            if (equal && word === keyword) {
                 return true
             }
         }
-        return selectedOnly.value && keywords.length === 0;
-
+        return selectedOnly.value && keywords.length === 0
     }
 
     const handlerSearch = debounce(() => {
@@ -50,12 +56,18 @@ const useIcons = () => {
         const categorySet = new Set<string>()
         const categoryGroupSet = new Set<string>()
         let count = 0
-        keyword.value = keyword.value.trim()
-        let keywords = keyword.value.toLowerCase().split(/[\s]+/)
+        let word = keyword.value.trim()
+
+        const equal = word.startsWith('=')
+        if (equal) {
+            word = word.substring(1)
+        }
+
+        let keywords = word.toLowerCase().split(/[\s，,；;、]+/g).filter(value => value.length > 0)
 
         if (selectedOnly.value) {
-            keywords = keyword.value.length === 0 ? [] : keywords
-        } else if (keyword.value === '') {
+            keywords = word.length === 0 ? [] : keywords
+        } else if (word === '') {
             icons.value = allIconItems
             searchTotal.value = total
             categoryCount.value = allCategoryCounts
@@ -70,7 +82,7 @@ const useIcons = () => {
             }
             if (item.kind === 'header' && !selectedOnly.value) {
                 for (let k of item.keywords) {
-                    if (include(k, keywords)) {
+                    if (include(k, keywords, equal)) {
                         searchIcons.push(item)
                         categoryGroupSet.add(item.category)
                         categorySet.add(item.category)
@@ -88,7 +100,7 @@ const useIcons = () => {
             }
             if (item.kind === 'icon') {
                 for (let k of item.keywords) {
-                    if (include(k, keywords)) {
+                    if (include(k, keywords, equal)) {
                         if (!categorySet.has(item.category)) {
                             searchIcons.push(allCategoryItems[item.category])
                             categorySet.add(item.category)
@@ -191,6 +203,12 @@ const useIcons = () => {
     }
 
     onBeforeMount(() => {
+        const k = route.query?.k ?? ''
+        if (k.length) {
+            keyword.value = "=" + k
+            search()
+            return
+        }
         iconsGroup()
     })
 
