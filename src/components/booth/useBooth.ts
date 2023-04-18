@@ -157,6 +157,7 @@ const useBooth = (name: string = '', zhName: string = '') => {
     }
 
     return {
+        getName,
         getSvg,
         actions,
         action,

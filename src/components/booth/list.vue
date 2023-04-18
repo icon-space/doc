@@ -5,11 +5,11 @@
     <div class="list-right">
         <a-space direction="vertical" size="mini" v-if="site.lang === 'zh'" class="title">
             <span>{{ zhName }}</span>
-            <span
-                ><small>{{ name }}</small></span
-            >
+            <span>
+                <small>{{ getName(name, zhName) }}</small>
+            </span>
         </a-space>
-        <span v-else class="title">{{ name }}</span>
+        <span v-else class="title">{{ getName(name, zhName) }}</span>
         <span class="more">
             <a-dropdown @select="action" @click="click">
                 <a-button shape="circle" type="text" size="mini">
@@ -45,7 +45,7 @@ const props = defineProps({
 
 const site = useSiteStore()
 
-const { actions, action } = useBooth(props.name, props.zhName)
+const { getName, actions, action } = useBooth(props.name, props.zhName)
 
 const click = (e: Event) => {
     e.stopPropagation()
