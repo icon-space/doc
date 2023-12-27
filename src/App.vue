@@ -3,8 +3,20 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted,onBeforeMount } from 'vue'
+import { useSessionStorage } from '@vueuse/core'
+import {useRouter} from "vue-router";
 import useSiteStore from './stores/site'
+
+const router = useRouter()
+const redirect = useSessionStorage('redirect', '')
+
+onBeforeMount(async () => {
+    if (redirect.value) {
+        await router.push(redirect.value)
+        redirect.value = ''
+    }
+})
 
 const site = useSiteStore()
 

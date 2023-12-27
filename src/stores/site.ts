@@ -18,7 +18,7 @@ const useSiteStore = defineStore({
     id: 'site',
     state: (): SiteOption => ({
         theme: 'light',
-        lang: 'en',
+        lang: 'zh',
         named: 'KebabCase',
         iconPrefix: ''
     }),
