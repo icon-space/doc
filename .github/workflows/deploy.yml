@@ -26,5 +26,5 @@ jobs:
         with:
           token: ${{ secrets.ICON_SPACE_TOKEN }}
           branch: gh-pages
-          folder: docs
+          folder: dist
           clean: true
