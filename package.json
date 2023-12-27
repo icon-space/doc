@@ -16,7 +16,6 @@
     "@arco-design/web-vue": "^2.53.3",
     "@icon-space/vue-next": "1.0.7",
     "@vue/server-renderer": "^3.3.13",
-    "@vueuse/core": "^10.7.0",
     "colorpicker-v3": "^2.10.2",
     "jszip": "^3.10.1",
     "pinia": "^2.1.7",
