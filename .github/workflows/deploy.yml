@@ -3,7 +3,7 @@ name: Github Pages Deployment
 on:
   push:
     branches:
-      - "main"
+      - dev
 
 jobs:
   deploy:
@@ -21,13 +21,10 @@ jobs:
       - name: Install and build
         run: pnpm i && pnpm run gen && pnpm run build:gh
 
-      - name: demo
-        run: rm -rf ./dist/index.html && mv ./dist/demo.html ./dist/index.html
-
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.ICON_SPACE_TOKEN }}
           branch: gh-pages
-          folder: dist
+          folder: docs
           clean: true
