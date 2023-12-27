@@ -21,6 +21,9 @@ jobs:
       - name: Install and build
         run: pnpm i && pnpm run gen && pnpm run build:gh
 
+      - name: demo
+        run: rm -rf ./dist/index.html && mv ./dist/demo.html ./dist/index.html
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
