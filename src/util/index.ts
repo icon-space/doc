@@ -9,12 +9,12 @@ export const debounce = (fn: () => void, delay: number | undefined) => {
 }
 
 // 下载文件
-export const download = (downfile: Blob) => {
+export const download = (downfile: Blob, name: string) => {
     const tmpLink = document.createElement('a')
     const objectUrl = URL.createObjectURL(downfile)
 
     tmpLink.href = objectUrl
-    tmpLink.download = downfile.name
+    tmpLink.download = name
     document.body.appendChild(tmpLink)
     tmpLink.click()
 

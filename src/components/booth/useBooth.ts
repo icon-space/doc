@@ -116,10 +116,11 @@ const useBooth = (name: string = '', zhName: string = '') => {
     const downloadSvg = async () => {
         const value = getName(name, zhName)
         const svg = await getSvg(name)
+        const fileName = `${value}.svg`
         const file = new File([svg], `${value}.svg`, {
             type: 'image/svg'
         })
-        download(file)
+        download(file, fileName)
     }
 
     // 批量下载
@@ -133,10 +134,11 @@ const useBooth = (name: string = '', zhName: string = '') => {
             zip.file(`${getName(k, icon.icons[k])}.svg`, svg)
         }
         const content = await zip.generateAsync({ type: 'blob' })
-        const file = new File([content], `IconSpace-${new Date().toLocaleString().replaceAll(/[\s\/:]+/g, '')}.zip`, {
+        const fileName = `IconSpace-${new Date().toLocaleString().replaceAll(/[\s\/:]+/g, '')}.zip`
+        const file = new File([content], name, {
             type: 'application/zip'
         })
-        download(file)
+        download(file, fileName)
     }
 
     const actions: Record<string, () => void> = {

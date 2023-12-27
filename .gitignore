@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 visualizer.html
+
+pnpm-lock.yaml
