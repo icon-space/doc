@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import { routes } from './routes'
 
-const base = import.meta.env.MODE == 'github' ? '/doc/' : '/'
+const base = import.meta.env.MODE == 'github' ? '/' : '/'
 
 const router = createRouter({
     history: createWebHistory(base),
