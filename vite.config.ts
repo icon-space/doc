@@ -9,7 +9,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 // https://vitejs.dev/config/
 
 export default defineConfig(({ mode }) => {
-    const base = mode === 'github' ? '/doc' : '/'
+    const base = mode === 'github' ? '/doc/' : '/'
     return {
         base: base,
         plugins: [
