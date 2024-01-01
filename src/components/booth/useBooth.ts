@@ -85,7 +85,7 @@ const useBooth = (name: string = '', zhName: string = '') => {
     }
 
     const copyReactCode = async () => {
-        const value = getName(name, zhName)
+        const value = toPascalCase(getName(name, zhName))
         let fill = option.getFill
         fill = typeof fill === 'string' ? fill : `{${JSON.stringify(fill).replaceAll('"', "'")}}`
         const reactCode = `<${value} theme="${option.theme}" size="${option.size}" strokeWidth="{${option.strokeWidth}}" strokeLinecap="${option.strokeLinecap}" strokeLinejoin="${option.strokeLinejoin}" fill="${fill}"/>`
@@ -94,7 +94,7 @@ const useBooth = (name: string = '', zhName: string = '') => {
     }
 
     const copyVueCode = async () => {
-        const value = getName(name, zhName)
+        const value = toPascalCase(getName(name, zhName))
         let fill = option.getFill
         if (typeof fill === 'string') {
             fill = `fill="${fill}"`
